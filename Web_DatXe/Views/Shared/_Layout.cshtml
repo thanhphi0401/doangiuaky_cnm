@@ -2,12 +2,78 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        /*Contact sectiom*/
+        .content-header {
+            font-family: 'Oleo Script', cursive;
+            color: #fcc500;
+            font-size: 45px;
+        }
+
+        .section-content {
+            text-align: center;
+        }
+
+        #contact {
+            font-family: 'Teko', sans-serif;
+            padding-top: 60px;
+            width: 80%;
+            width: 80vw;
+            height: 550px;
+            background: #3a6186; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #3a6186, #89253e); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #3a6186, #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: #fff;
+        }
+
+        .contact-section {
+            padding-top: 40px;
+        }
+
+            .contact-section .col-md-6 {
+                width: 50%;
+            }
+
+        .form-line {
+            border-right: 1px solid #B29999;
+        }
+
+        .form-group {
+            margin-top: 10px;
+        }
+
+        label {
+            font-size: 1.3em;
+            line-height: 1em;
+            font-weight: normal;
+        }
+
+        .form-control {
+            font-size: 1.3em;
+            color: #080808;
+        }
+
+        textarea.form-control {
+            height: 135px;
+            /* margin-top: px;*/
+        }
+
+        .submit {
+            font-size: 1.1em;
+            float: right;
+            width: 150px;
+            background-color: transparent;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
+    
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -16,13 +82,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("GrabOnline", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+          <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                 
                 </ul>
             </div>
         </div>
@@ -38,5 +103,21 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+    <script>
+    //Initialize the Realtime Database JavaScript SDK
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBPRUwT-TI81VkXmC_MReaj8msT-8NTxEY",
+    authDomain: "doangiuakiapp1.firebaseapp.com",
+    databaseURL: "https://doangiuakiapp1.firebaseio.com",
+    projectId: "doangiuakiapp1",
+    storageBucket: "doangiuakiapp1.appspot.com",
+    messagingSenderId: "208748898412"
+  };
+  firebase.initializeApp(config);
+    </script>
 </body>
 </html>
