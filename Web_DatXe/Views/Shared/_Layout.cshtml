@@ -73,7 +73,7 @@
     </style>
 </head>
 <body>
-    
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -84,10 +84,10 @@
                 </button>
                 @Html.ActionLink("GrabOnline", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-          <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                 
+
                 </ul>
             </div>
         </div>
@@ -107,19 +107,52 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
     <script>
-   
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBPRUwT-TI81VkXmC_MReaj8msT-8NTxEY",
-    authDomain: "doangiuakiapp1.firebaseapp.com",
-    databaseURL: "https://doangiuakiapp1.firebaseio.com",
-    projectId: "doangiuakiapp1",
-    storageBucket: "doangiuakiapp1.appspot.com",
-    messagingSenderId: "208748898412"
-  };
-  firebase.initializeApp(config);
+
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBPRUwT-TI81VkXmC_MReaj8msT-8NTxEY",
+            authDomain: "doangiuakiapp1.firebaseapp.com",
+            databaseURL: "https://doangiuakiapp1.firebaseio.com",
+            projectId: "doangiuakiapp1",
+            storageBucket: "doangiuakiapp1.appspot.com",
+            messagingSenderId: "208748898412"
+        };
+        firebase.initializeApp(config);
     </script>
 
-    <script src="~/Assets/scripts/main.js"></script>
+    <script src="/Assets/scripts/main.js"></script>
+    <script>
+function checkSetup() {
+            if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
+                window.alert('You have not configured and imported the Firebase SDK. ' +
+                    'Make sure you go through the codelab setup instructions and make ' +
+                    'sure you are running the codelab using `firebase serve`');
+            }
+        };
+
+
+        // thiết lập xác thực firebase with google
+        var database = firebase.database();
+        var customerName = document.getElementById('customerName');
+        var telephone = document.getElementById('telephone');
+        var type = document.getElementById('type');
+        var address = document.getElementById('address');
+
+        var submitButton = document.getElementById('submit');
+
+        submitButton.addEventListener('click', saveMessage());
+        function saveMessage() {
+
+            this.customerRef = this.database.ref('customer');
+
+            this.customerRef.push({
+                customerName: this.customerName.value,
+                address: this.address.value,
+                type: this.type.value,
+                telephone: this.telephone.value
+            })
+            
+        };
+    </script>
 </body>
 </html>
