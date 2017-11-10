@@ -149,6 +149,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bootbox.min.js" />
     <Content Include="Assets\bootstrap-3.3.7\css\bootstrap-theme.css" />
     <Content Include="Assets\bootstrap-3.3.7\css\bootstrap-theme.min.css" />
     <Content Include="Assets\bootstrap-3.3.7\css\bootstrap.css" />
@@ -160,12 +161,10 @@
     <Content Include="Assets\jquery-3.1.1.min.js" />
     <Content Include="Assets\scripts\main.js" />
     <Content Include="Assets\vue-2.5.3.js" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Assets\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
