@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <title>@ViewBag.Title - Trang chủ</title>
+    
+    <link href="/Assets/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Assets/Site.css" rel="stylesheet" />
     <style>
         /*Contact sectiom*/
         .content-header {
@@ -96,14 +96,18 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Ứng dụng đặt xe online</p>
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 
+    <script src="/Assets/jquery-3.1.1.min.js"></script>
+    <script src="/Assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/Assets/bootbox.min.js"></script>
+    <script src="/Assets/vue-2.5.3.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
     <script>
@@ -121,38 +125,7 @@
     </script>
 
     <script src="/Assets/scripts/main.js"></script>
-    <script>
-function checkSetup() {
-            if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
-                window.alert('You have not configured and imported the Firebase SDK. ' +
-                    'Make sure you go through the codelab setup instructions and make ' +
-                    'sure you are running the codelab using `firebase serve`');
-            }
-        };
 
-
-        // thiết lập xác thực firebase with google
-        var database = firebase.database();
-        var customerName = document.getElementById('customerName');
-        var telephone = document.getElementById('telephone');
-        var type = document.getElementById('type');
-        var address = document.getElementById('address');
-
-        var submitButton = document.getElementById('submit');
-
-        submitButton.addEventListener('click', saveMessage());
-        function saveMessage() {
-
-            this.customerRef = this.database.ref('customer');
-
-            this.customerRef.push({
-                customerName: this.customerName.value,
-                address: this.address.value,
-                type: this.type.value,
-                telephone: this.telephone.value
-            })
-            
-        };
-    </script>
+    
 </body>
 </html>

@@ -149,7 +149,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bootstrap-3.3.7\css\bootstrap-theme.css" />
+    <Content Include="Assets\bootstrap-3.3.7\css\bootstrap-theme.min.css" />
+    <Content Include="Assets\bootstrap-3.3.7\css\bootstrap.css" />
+    <Content Include="Assets\bootstrap-3.3.7\css\bootstrap.min.css" />
+    <Content Include="Assets\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\bootstrap-3.3.7\js\bootstrap.js" />
+    <Content Include="Assets\bootstrap-3.3.7\js\bootstrap.min.js" />
+    <Content Include="Assets\bootstrap-3.3.7\js\npm.js" />
+    <Content Include="Assets\jquery-3.1.1.min.js" />
     <Content Include="Assets\scripts\main.js" />
+    <Content Include="Assets\vue-2.5.3.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -162,6 +172,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\fuctions\package.json" />
+    <Content Include="Assets\bootstrap-3.3.7\css\bootstrap-theme.css.map" />
+    <Content Include="Assets\bootstrap-3.3.7\css\bootstrap-theme.min.css.map" />
+    <Content Include="Assets\bootstrap-3.3.7\css\bootstrap.css.map" />
+    <Content Include="Assets\bootstrap-3.3.7\css\bootstrap.min.css.map" />
+    <Content Include="Assets\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -184,8 +202,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
