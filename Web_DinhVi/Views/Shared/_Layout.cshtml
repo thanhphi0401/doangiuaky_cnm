@@ -44,6 +44,20 @@
     <script src="/Assets/vue-2.5.3.js"></script>
     <script src="/Assets/bootbox.min.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBPRUwT-TI81VkXmC_MReaj8msT-8NTxEY",
+            authDomain: "doangiuakiapp1.firebaseapp.com",
+            databaseURL: "https://doangiuakiapp1.firebaseio.com",
+            projectId: "doangiuakiapp1",
+            storageBucket: "doangiuakiapp1.appspot.com",
+            messagingSenderId: "208748898412"
+        };
+        firebase.initializeApp(config);
+    </script>
+
     <script src="/Assets/scripts/main.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkXZtUT0xV5xWjf39lS1de3qFybmlyRzA&callback=initMap"
             async defer></script>
