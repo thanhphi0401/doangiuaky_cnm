@@ -25,12 +25,14 @@ loadUnlocatedCustomer=function() {
     var textVal = document.getElementById('testVal');
     var customerRef = database.ref('customer');
     var i = 2;
+    //retrieve data from firebase
     customerRef.on("child_added", retVal => {
         var status = retVal.child("status").val();
         var address = retVal.child("address").val();
         var customerName = retVal.child("customerName").val();
         var telephone = retVal.child("telephone").val();
-        
+
+        //adđ html code
        if (status == "0") {
            $("#selection").append("<option value=" + i + ">" + address + "</option>");
            i++;
@@ -40,7 +42,6 @@ loadUnlocatedCustomer=function() {
 
 
 function codeAddress(address) {
-
     geocoder.geocode({ 'address': address }, function (results, status) {
         if (status == 'OK') {
             map.setCenter(results[0].geometry.location);
@@ -52,4 +53,20 @@ function codeAddress(address) {
             alert('Geocode was not successful for the following reason: ' + status);
         }
     });
+}
+
+function submitAddress() {
+    //get data from #selected and push to #address
+    var selectedCustomerAddress = document.getElementById('selection');
+    var inputAdress = document.getElementById('address');
+    inputAdress.value = selectedCustomerAddress.val();
+
+
+    //update status field = 
+    customerRef.on('child_added', retVal => {
+        var address = retVal.child("address").val();
+        if (address == selectedCustomerAddress.val()) {
+            customerRef.
+        }
+    })
 }
