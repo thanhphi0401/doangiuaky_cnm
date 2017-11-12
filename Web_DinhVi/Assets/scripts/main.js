@@ -14,9 +14,11 @@ function checkSetup() {
             'Make sure you go through the codelab setup instructions and make ' +
             'sure you are running the codelab using `firebase serve`');
     }
-};
+}
+
 
 function initialize() {
+
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(10.8230989, 106.6296638);
     var mapOptions = {
@@ -26,9 +28,29 @@ function initialize() {
 
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+    loadUnlocatedCustomer();
+
+
     loadData();
+
 }
 
+loadUnlocatedCustomer = function () {
+    var textVal = document.getElementById('testVal');
+    var customerRef = database.ref('customer');
+    var i = 2;
+    customerRef.on("child_added", retVal => {
+        var status = retVal.child("status").val();
+        var address = retVal.child("address").val();
+        var customerName = retVal.child("customerName").val();
+        var telephone = retVal.child("telephone").val();
+
+        if (status == "0") {
+            $("#selection").append("<option value=" + i + ">" + address + "</option>");
+            i++;
+        }
+    });
+}
 
 // load dữ liệu chat lịch sử
 function loadData() {
