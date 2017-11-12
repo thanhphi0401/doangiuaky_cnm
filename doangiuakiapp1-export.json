@@ -1,0 +1,507 @@
+{
+  "customer" : {
+    "-KyjJwfPXEL6b8gqy3mw" : {
+      "address" : "khoa học tự nhiên",
+      "customerName" : "nguyễn hữu Phương",
+      "status" : "0",
+      "telephone" : "036953165",
+      "type" : "1"
+    },
+    "-KykwRGD8dW6PSIr2FIt" : {
+      "address" : "suối tiên",
+      "customerName" : "naruto",
+      "status" : "0",
+      "telephone" : "6946552",
+      "type" : "2"
+    }
+  },
+  "motorbike" : [ null, {
+    "biensoxe" : "51A-12345",
+    "chuxe" : "Nguyễn Thanh Phi",
+    "diachi" : "227 Nguyễn Văn Cừ, Quận 5, Hồ Chí Minh",
+    "kinhdo" : "106.68225710000002",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.762887"
+  }, {
+    "biensoxe" : "51A-342342",
+    "chuxe" : "Vũ Đình Thăng",
+    "diachi" : "Cầu vượt Nguyễn Tri Phương, Quận 10, Hồ Chí Minh",
+    "kinhdo" : "106.67030150000005",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.7557839"
+  }, {
+    "biensoxe" : "51A-35446",
+    "chuxe" : "Nguyễn Văn Long",
+    "diachi" : "Siêu thị Big C Miền Đông, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.666069",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.77728"
+  }, {
+    "biensoxe" : "51A-242132",
+    "chuxe" : "Trần Thị Ngọc Diệu",
+    "diachi" : "Bệnh viện 115, Phường 14, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.666069",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.77728"
+  }, {
+    "biensoxe" : "51A-869433",
+    "chuxe" : "Chu Thị Bê ta",
+    "diachi" : "31 Phạm Ngũ Lão, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.69850900000006",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.77035"
+  }, {
+    "biensoxe" : "51A-312543",
+    "chuxe" : "Hoàng Lão Tà",
+    "diachi" : "32 Hồ Văn Tư, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.75563799999998",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.8467241"
+  }, {
+    "biensoxe" : "51A-242123",
+    "chuxe" : "Võ Nguyên Đạt",
+    "diachi" : "Khu Chế Xuất Linh Trung, Asian Highway 1, Linh Trung, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.76917120000007",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.8683938"
+  }, {
+    "biensoxe" : "51A-865423",
+    "chuxe" : "Trương A Quý",
+    "diachi" : "Suối Tiên Quốc lộ 1 A, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.80298300000004",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.866767"
+  }, {
+    "biensoxe" : "51A-905321",
+    "chuxe" : "Trần Văn Phong",
+    "diachi" : "Trường đại học Ngân hàng Thành phố Hồ Chí Minh, Cơ sở Hoàng Diệu - Thủ Đức, Hoàng Diệu 2, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.76181169999995",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.8577471"
+  }, {
+    "biensoxe" : "51A-768392",
+    "chuxe" : "Đinh Đức Thiệu",
+    "diachi" : "Ngân hàng Đông Á, Trường Chinh, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.63315990000001",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.8110766"
+  }, {
+    "biensoxe" : "51A-096593",
+    "chuxe" : "Võ Quốc Tuấn ",
+    "diachi" : "Ký túc xá khu A - ĐH Quốc gia Tp. Hồ Chí Minh, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.80621040000005",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.8782309"
+  }, {
+    "biensoxe" : "51A-563920",
+    "chuxe" : "Vũ Quốc Thanh",
+    "diachi" : "Cảng hàng không Quốc tế Tân Sơn Nhất, Tân Bình, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.65882450000004",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.8184631"
+  }, {
+    "biensoxe" : "51A-125862",
+    "chuxe" : "Nguyễn Văn Hoàng Kỳ",
+    "diachi" : "FPT Software Hồ Chí Minh, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.79835980000007",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.8509782"
+  }, {
+    "biensoxe" : "51A-459782",
+    "chuxe" : "Trương Thị Mẫn ",
+    "diachi" : "Trường Đại học FPT., Quang Trung, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.62943489999998",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.8528718"
+  }, {
+    "biensoxe" : "51A-456357",
+    "chuxe" : "Nguyễn Thị Ngọc Lan",
+    "diachi" : "Công ty TNHH Gameloft, Cộng Hòa, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.62943489999998",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.8528718"
+  }, {
+    "biensoxe" : "51A-997775",
+    "chuxe" : "Bùi Phú Hà",
+    "diachi" : "TMA Solutions Lab 1, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.67834040000002",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.7955209"
+  }, {
+    "biensoxe" : "51A-123963",
+    "chuxe" : "Trần Phương Nam",
+    "diachi" : "Công ty Global CyberSoft, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.62613680000004",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.8543933"
+  }, {
+    "biensoxe" : "51A-556789",
+    "chuxe" : "Tiêu Thanh Hướng",
+    "diachi" : "Công Ty ELCA, Điện Biên Phủ, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.72292360000006",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.7991927"
+  }, {
+    "biensoxe" : "51A-330548",
+    "chuxe" : "Trần Nguyễn Ngọc Hà",
+    "diachi" : "Trường Đại học luật TP.HCM, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.70556450000004",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.7676072"
+  }, {
+    "biensoxe" : "51A-336958",
+    "chuxe" : "Nguyễn Minh Toàn",
+    "diachi" : "Trường Đại học Bách khoa TP.HCM, Lý Thường Kiệt, phường 14, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.6598146",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.7734543"
+  }, {
+    "biensoxe" : "51A-102586",
+    "chuxe" : "Đinh Lê Trà My",
+    "diachi" : "Bảo tàng chứng tích chiến tranh, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.69214740000007",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.779394"
+  }, {
+    "biensoxe" : "51A-036598",
+    "chuxe" : "Thái Thanh Phong",
+    "diachi" : "Studio 60, Đường Nguyễn Văn Thủ, Đa Kao, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.69933830000002",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.7905188"
+  }, {
+    "biensoxe" : "51A-456987",
+    "chuxe" : "Phùng Thị Thúy Vân",
+    "diachi" : "Đại học Y Dược, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.66297269999995",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.7552278"
+  }, {
+    "biensoxe" : "51A-225566",
+    "chuxe" : "Nguyễn Thị Kiều Vy",
+    "diachi" : "Đại học Tôn Đức Thắng, Nguyễn Hữu Thọ, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.69990200000007",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.73268"
+  }, {
+    "biensoxe" : "51A-301968",
+    "chuxe" : "Nguyễn Ngọc Lan Vi",
+    "diachi" : "Đầm Sen, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.64082439999993",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.7677548"
+  }, {
+    "biensoxe" : "51A-725691",
+    "chuxe" : "Trịnh Võ Hoàng",
+    "diachi" : "Dinh Độc Lập, Nam Kỳ Khởi Nghĩa, Bến Thành, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.69598580000002",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.77765"
+  }, {
+    "biensoxe" : "51A-169532",
+    "chuxe" : "Chu Văn Hiếu",
+    "diachi" : "VNG Corporation, Lê Đại Hành, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.65626480000003",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.7639382"
+  }, {
+    "biensoxe" : "51A-306512",
+    "chuxe" : "Trương Tấn Sang",
+    "diachi" : "Công Ty FUJInet",
+    "kinhdo" : "106.66645599999993",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.805136"
+  }, {
+    "biensoxe" : "51A-754613",
+    "chuxe" : "Khương Thị Dung",
+    "diachi" : "Công viên Lê Thị Riêng, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.66561200000001",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.7843208"
+  }, {
+    "biensoxe" : "51A-003698",
+    "chuxe" : "Khương Đình Thành",
+    "diachi" : "Hồ bơi Văn Thánh, Phường 22, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.71492599999999",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.797972"
+  }, {
+    "biensoxe" : "51A-083872",
+    "chuxe" : "Nguyễn Tấn Triều",
+    "diachi" : "20 Võ Văn Kiệt, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.70126359999995",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.7676156"
+  }, {
+    "biensoxe" : "51A-469512",
+    "chuxe" : "Đỗ Ngọc Trang Nhung",
+    "diachi" : "Đại học Hutech, Phường 25, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.71484580000003",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.8018391"
+  }, {
+    "biensoxe" : "51A-378923",
+    "chuxe" : "Nguyễn Thị Mỹ Liễu",
+    "diachi" : "IUH, Nguyễn Văn Bảo, phường 4, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.6875162",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.8221246"
+  }, {
+    "biensoxe" : "51A-031325",
+    "chuxe" : "Bùi Viết Dũng",
+    "diachi" : "Hoàng Diệu 2, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.76452599999993",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.856284"
+  }, {
+    "biensoxe" : "51A-891456",
+    "chuxe" : "Chương A Thành Đạt",
+    "diachi" : "Trường Trung cấp Ánh Sáng (Cơ Sở 2), Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.61186769999995",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.831629"
+  }, {
+    "biensoxe" : "51A-886352",
+    "chuxe" : "Nguyễn Văn Thành",
+    "diachi" : "Rin Rin Park Công Viên Nhật Bản, ấp Xuân Thới Đông 1, Xuân Thới Đông, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.58471899999995",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.8593496"
+  }, {
+    "biensoxe" : "51A-146235",
+    "chuxe" : "Trần Văn Công Lý",
+    "diachi" : "Phan Huy Ích, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.63486499999999",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.8343387"
+  }, {
+    "biensoxe" : "51A-963302",
+    "chuxe" : "Nguyễn Viết Đông",
+    "diachi" : "Chợ Thủ Đức, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.76794619999998",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.8735594"
+  }, {
+    "biensoxe" : "51A-603215",
+    "chuxe" : "Lương Vĩnh Khang",
+    "diachi" : "Ngã Tư Thủ Đức, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.77298999999994",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.84828"
+  }, {
+    "biensoxe" : "51A-786659",
+    "chuxe" : "Trần Lâm Khang",
+    "diachi" : "Trường Cao Đẳng Công Thương TP.HCM, Tăng Nhơn Phú, Phước Long B, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.77545650000002",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.8303076"
+  }, {
+    "biensoxe" : "51A-249290",
+    "chuxe" : "Trần Ly Ly",
+    "diachi" : "Chung cư Ngô Gia Tự, phường 2, Ho Chi Minh City, Ho Chi Minh, Vietnam, ",
+    "kinhdo" : "106.67376749999994",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.7628213"
+  }, {
+    "biensoxe" : "51A-10911",
+    "chuxe" : "Lê Trần Anh",
+    "diachi" : "1000 Phạm Thế Hiển, Ho Chi Minh City, Ho Chi Minh, Vietnam ",
+    "kinhdo" : "106.66127289999997",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.7418731"
+  }, {
+    "biensoxe" : "59A-09411",
+    "chuxe" : "Nguyễn Đăng Phương",
+    "diachi" : "Cầu Ánh Sao, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.71851779999997",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.7247197"
+  }, {
+    "biensoxe" : "59A-24811",
+    "chuxe" : "Nguyễn Hoàng Thùy Dung",
+    "diachi" : "Địa Đạo Củ Chi, Phú Mỹ Hưng, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.46427560000006",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "11.1442864"
+  }, {
+    "biensoxe" : "59A-10111",
+    "chuxe" : "Lê Hoàng Thùy Dung",
+    "diachi" : "Công viên Hoàng Văn Thụ, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.66475820000005",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.8012337"
+  }, {
+    "biensoxe" : "59A-09141",
+    "chuxe" : "Hoàng Anh Tú",
+    "diachi" : "E.Town 2, Cộng Hòa, phường 13, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.63972239999998",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.8019257"
+  }, {
+    "biensoxe" : "59A-02911",
+    "chuxe" : "Lê Khiêm",
+    "diachi" : "542 Cách Mạng Tháng 8, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.65441899999996",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.792531"
+  }, {
+    "biensoxe" : "59A-84222",
+    "chuxe" : "Lê Hoàng Anh",
+    "diachi" : "Vòng Xoay Dân Chủ, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.68164469999999",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.7781382"
+  }, {
+    "biensoxe" : "59A-22222",
+    "chuxe" : "Lê Thị Anh",
+    "diachi" : "Bệnh viện Chợ Rẫy, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.65973050000002",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.7570385"
+  }, {
+    "biensoxe" : "78F1-80109",
+    "chuxe" : "Nguyễn Đông Dương",
+    "diachi" : "Cư Xá Đồng Tiến, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.66441099999997",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.7695301"
+  }, {
+    "biensoxe" : "78F1-08342",
+    "chuxe" : "Nguyễn Đông Thanh Phong",
+    "diachi" : "Ho Chi Minh City Labor Culture Palace, Nguyễn Thị Minh Khai, Bến Thành, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.69266579999999",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.7764498"
+  }, {
+    "biensoxe" : "78F1-19811",
+    "chuxe" : "Nguyễn Thành Nam",
+    "diachi" : "Bến xe Miền Đông, Đinh Bộ Lĩnh, phường 26, Vietnam",
+    "kinhdo" : "106.7113028",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.8148129"
+  }, {
+    "biensoxe" : "81F1-884141",
+    "chuxe" : "Lê Nguyên Đức",
+    "diachi" : "Bến xe Miền Đông, Đinh Bộ Lĩnh, phường 26, Vietnam",
+    "kinhdo" : "106.7113028",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.8148129"
+  }, {
+    "biensoxe" : "78F1-09411",
+    "chuxe" : "Nguyễn Hoàng Tôn",
+    "diachi" : "Bến xe Miền Đông, Đinh Bộ Lĩnh, phường 26, Vietnam",
+    "kinhdo" : "106.7113028",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.8148129"
+  }, {
+    "biensoxe" : "78F1-65875",
+    "chuxe" : "Nguyễn Hoàng Thịnh",
+    "diachi" : "Cầu Bình Triệu, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.71353969999996",
+    "loaixe" : "1",
+    "status" : "2",
+    "vido" : "10.820596"
+  }, {
+    "biensoxe" : "49A1-74142",
+    "chuxe" : "Nguyễn Thanh Nhàn",
+    "diachi" : "Lý Thái Tổ, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.67471590000002",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.767537"
+  }, {
+    "biensoxe" : "49A1-27432",
+    "chuxe" : "Nguyễn Thanh Nhân",
+    "diachi" : "Ho Chi Minh City Pasteur Institute, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.68860410000002",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.7863775"
+  }, {
+    "biensoxe" : "49A1-65462",
+    "chuxe" : "Nguyễn Hồng Đào",
+    "diachi" : "20 Hoàng Sa, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.70473990000005",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.7919591"
+  }, {
+    "biensoxe" : "49A1-62422",
+    "chuxe" : "Lê Văn Đào",
+    "diachi" : "100 Trường Sa, Ho Chi Minh City, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.70048889999998",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.7938802"
+  }, {
+    "biensoxe" : "49A1-75792",
+    "chuxe" : "Nguyễn Đồng Tiến",
+    "diachi" : "Parkson Hung Vuong Plaza, Đường Hùng Vương, phường 4, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.66306259999999",
+    "loaixe" : "2",
+    "status" : "2",
+    "vido" : "10.7560552"
+  }, {
+    "biensoxe" : "49A1-32521",
+    "chuxe" : "Nguyễn Anh Giang",
+    "diachi" : "City Garden, Ho Chi Minh City, quận Bình Thạnh, Ho Chi Minh, Vietnam",
+    "kinhdo" : "106.7109898",
+    "loaixe" : "2",
+    "status" : "1",
+    "vido" : "10.7937176"
+  } ]
+}
