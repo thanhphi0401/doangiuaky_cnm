@@ -1,131 +1,123 @@
 ﻿var geocoder;
 var map;
-<<<<<<< HEAD
+
      var database = firebase.database();
-checkSetup = function () {
-=======
-
-var motorbikes = [];
-
-//load danh sách xe và hiển thị bản đồ
 
 
-// thiết lập xác thực firebase with google
-var database = firebase.database();
-function checkSetup() {
->>>>>>> origin/master
-    if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
-        window.alert('You have not configured and imported the Firebase SDK. ' +
-            'Make sure you go through the codelab setup instructions and make ' +
-            'sure you are running the codelab using `firebase serve`');
-    }
-<<<<<<< HEAD
-}
+    var motorbikes = [];
 
-initialize=function() {
-=======
-};
+    //load danh sách xe và hiển thị bản đồ
 
-function initialize() {
->>>>>>> origin/master
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(10.8230989, 106.6296638);
-    var mapOptions = {
-        zoom: 10,
-        center: latlng
+
+    // thiết lập xác thực firebase with google
+    var database = firebase.database();
+    function checkSetup() {
+
+        if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
+            window.alert('You have not configured and imported the Firebase SDK. ' +
+                'Make sure you go through the codelab setup instructions and make ' +
+                'sure you are running the codelab using `firebase serve`');
+        }
+
     }
 
-    map = new google.maps.Map(document.getElementById('map'), mapOptions);
-<<<<<<< HEAD
-    loadUnlocatedCustomer();
-=======
 
-    loadData();
->>>>>>> origin/master
-}
+    function initialize() {
 
-loadUnlocatedCustomer=function() {
-    var textVal = document.getElementById('testVal');
-    var customerRef = database.ref('customer');
-    var i = 2;
-    //retrieve data from firebase
-    customerRef.on("child_added", retVal => {
-        var status = retVal.child("status").val();
-        var address = retVal.child("address").val();
-        var customerName = retVal.child("customerName").val();
-        var telephone = retVal.child("telephone").val();
-
-<<<<<<< HEAD
-        //adđ html code
-       if (status == "0") {
-           $("#selection").append("<option value=" + i + ">" + address + "</option>");
-           i++;
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(10.8230989, 106.6296638);
+        var mapOptions = {
+            zoom: 10,
+            center: latlng
         }
-    });
-}
-=======
-// load dữ liệu chat lịch sử
-function loadData() {
 
-    this.messagesRef = this.database.ref('motorbike');
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-    this.messagesRef.off();
+        loadUnlocatedCustomer();
 
+        loadData();
 
-    var setMessage = function (data) {
-        var val = data.val();
+    }
 
-        this.saveDatabase(data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido, val.loaixe, val.status);
-    }.bind(this);
+    // load dữ liệu chat lịch sử
+    function loadData() {
 
+        this.messagesRef = this.database.ref('motorbike');
 
-    this.messagesRef.limitToLast(100).on('child_added', setMessage);
-    this.messagesRef.limitToLast(100).on('child_changed', setMessage);
-
-};
-
-function saveDatabase(key, biensoxe, chuxe, diachi, kinhdo, vido, loaixe, status) {
-    //console.log(key + " " + biensoxe + " " + diachi + " " + kinhdo + " " + vido + " " + loaixe + " " + status);
-    //console.log("==============================");
-
-    var data = [biensoxe, chuxe, diachi, kinhdo, vido, loaixe, status];
-    motorbikes.push(data);
-
-}
-
->>>>>>> origin/master
+        this.messagesRef.off();
 
 
-function codeAddress(address) {
-    geocoder.geocode({ 'address': address }, function (results, status) {
-        if (status == 'OK') {
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-        } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-        }
-    });
-<<<<<<< HEAD
-}
+        var setMessage = function (data) {
+            var val = data.val();
 
-function submitAddress() {
-    //get data from #selected and push to #address
-    var selectedCustomerAddress = document.getElementById('selection');
-    var inputAdress = document.getElementById('address');
-    inputAdress.value = selectedCustomerAddress.val();
+            this.saveDatabase(data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido, val.loaixe, val.status);
+        }.bind(this);
 
 
-    //update status field = 
-    customerRef.on('child_added', retVal => {
-        var address = retVal.child("address").val();
-        if (address == selectedCustomerAddress.val()) {
-            customerRef.
-        }
-    })
-=======
+        this.messagesRef.limitToLast(100).on('child_added', setMessage);
+        this.messagesRef.limitToLast(100).on('child_changed', setMessage);
+
+    };
+
+    function saveDatabase(key, biensoxe, chuxe, diachi, kinhdo, vido, loaixe, status) {
+        //console.log(key + " " + biensoxe + " " + diachi + " " + kinhdo + " " + vido + " " + loaixe + " " + status);
+        //console.log("==============================");
+
+        var data = [biensoxe, chuxe, diachi, kinhdo, vido, loaixe, status];
+        motorbikes.push(data);
+
+    }
+
+
+    function codeAddress(address) {
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+
+    }
+
+    loadUnlocatedCustomer = function () {
+        var textVal = document.getElementById('testVal');
+        var customerRef = database.ref('customer');
+
+        //retrieve data from firebase
+        customerRef.on("child_added", retVal => {
+            var status = retVal.child("status").val();
+            var address = retVal.child("address").val();
+            var customerName = retVal.child("customerName").val();
+            var telephone = retVal.child("telephone").val();
+
+
+            //add html code
+            if (status == "0") {
+                $("#selection").append("<option value=" + address + ">" + address + "</option>");
+
+            }
+        });
+    }
+    //ham xu ly su kien khi nguoi dung click nut xac dinh
+    function submitAddress() {
+        //get selected text in dropdown list using javascript
+        var datalist = document.getElementById('selection');
+        document.getElementById('address').value = datalist.options[datalist.selectedIndex].text;
+        //update status field = 0
+        var customerRef = database.ref('customer');
+        this.customerRef.on("child_added", retVal => {
+            var address = retVal.child("address").val();
+            if (address == selectedCustomerAddress.val()) {
+                retVal.child("status") = "0";
+            }
+        });
+    }
+
 
     var image = {
         url: "/Assets/moto.png",
@@ -171,18 +163,18 @@ function submitAddress() {
 
     var service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
-      {
-          origins: origin,
-          destinations: destination,
-          travelMode: 'DRIVING',
-          drivingOptions: {
-              departureTime: new Date(Date.now()),
-              trafficModel: 'bestguess'
-          },
-          unitSystem: google.maps.UnitSystem.METRIC,
-          avoidHighways: true,
-          avoidTolls: true,
-      }, callback);
+        {
+            origins: origin,
+            destinations: destination,
+            travelMode: 'DRIVING',
+            drivingOptions: {
+                departureTime: new Date(Date.now()),
+                trafficModel: 'bestguess'
+            },
+            unitSystem: google.maps.UnitSystem.METRIC,
+            avoidHighways: true,
+            avoidTolls: true,
+        }, callback);
 
 
 
@@ -224,6 +216,3 @@ function submitAddress() {
         }
 
     }
-
->>>>>>> origin/master
-}
