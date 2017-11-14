@@ -84,9 +84,16 @@ var map;
 
     }
 
-    loadUnlocatedCustomer = function () {
+    var loadUnlocatedCustomer = function () {
         var textVal = document.getElementById('testVal');
         var customerRef = database.ref('customer');
+
+        //delete all selection
+        var select = document.getElementById("selection");
+        var length = select.options.length;
+        for (i = 0; i < length; i++) {
+            select.options[i] = null;
+        }
 
         //retrieve data from firebase
         customerRef.on("child_added", retVal => {
@@ -109,13 +116,31 @@ var map;
         var datalist = document.getElementById('selection');
         document.getElementById('address').value = datalist.options[datalist.selectedIndex].text;
         //update status field = 0
+
+        //khai bao reference
         var customerRef = database.ref('customer');
-        this.customerRef.on("child_added", retVal => {
+        var postData;
+        //lay ref child can thay doi
+        var childKey;
+        customerRef.on("child_added", retVal => {
             var address = retVal.child("address").val();
-            if (address == selectedCustomerAddress.val()) {
-                retVal.child("status") = "0";
+            if (address == datalist.options[datalist.selectedIndex].text) {
+                childKey = retVal.key;
+                //create post entity
+                postData = {
+                    customerName: retVal.val().customerName,
+                    address: retVal.val().address,
+                    status: retVal.val().status,
+                    type: retVal.val().type,
+                    telephone: retVal.val().telephone,
+                    status:"1"
+                };
             }
         });
+        //tien hanh update 
+        var childRef = customerRef.child(childKey);
+        childRef.update(postData);
+        loadUnlocatedCustomer();
     }
 
 
