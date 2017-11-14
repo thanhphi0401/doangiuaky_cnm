@@ -1,5 +1,6 @@
 ﻿var geocoder;
 var map;
+var markers = [];
 
 var motorbikes = [];
 
@@ -85,6 +86,9 @@ function saveDatabase(key, biensoxe, chuxe, diachi, kinhdo, vido, loaixe, status
 
 
 function codeAddress(address) {
+
+    deleteMarkers();
+
     geocoder.geocode({ 'address': address }, function (results, status) {
         if (status == 'OK') {
             map.setCenter(results[0].geometry.location);
@@ -92,6 +96,8 @@ function codeAddress(address) {
                 map: map,
                 position: results[0].geometry.location
             });
+            markers.push(marker);
+
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }
@@ -182,77 +188,98 @@ for (var i = 0; i < motorbikes.length; i++) {
 
     //showw toan bo xe
 
-    //var marker = new google.maps.Marker({
-    //    position: { lat: parseFloat(motorbike[4]), lng: parseFloat(motorbike[3]) },
-    //    map: map,
-    //    icon: image,
-    //    shape: shape,
-    //    title: motorbike[1]
-    //    //zIndex: beach[3]
-    //});
+    function callback(response, status) {
 
-    //show 10 xe gan nhat: 300m-600m-1km
 
-    if (motorbike[6] == "1") {
-        var a = new google.maps.LatLng(parseFloat(motorbike[4]), parseFloat(motorbike[3]));
-        destination.push(a);
+        //var marker = new google.maps.Marker({
+        //    position: { lat: parseFloat(motorbike[4]), lng: parseFloat(motorbike[3]) },
+        //    map: map,
+        //    icon: image,
+        //    shape: shape,
+        //    title: motorbike[1]
+        //    //zIndex: beach[3]
+        //});
+
+        //show 10 xe gan nhat: 300m-600m-1km
+
+        if (motorbike[6] == "1") {
+            var a = new google.maps.LatLng(parseFloat(motorbike[4]), parseFloat(motorbike[3]));
+            destination.push(a);
+        }
+
+    }
+
+
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+        {
+            origins: origin,
+            destinations: destination,
+            travelMode: 'DRIVING',
+            drivingOptions: {
+                departureTime: new Date(Date.now()),
+                trafficModel: 'bestguess'
+            },
+            unitSystem: google.maps.UnitSystem.METRIC,
+            avoidHighways: true,
+            avoidTolls: true,
+        }, callback);
+
+
+
+    function callback(response, status) {
+        console.log(response);
+        console.log(status);
+
+        if (status == 'OK') {
+
+            var destinations = response.destinationAddresses;
+
+            var results = response.rows[0].elements;
+            for (var j = 0; j < results.length; j++) {
+                var element = results[j];
+                var distance = element.distance.value;
+
+                if (distance < 3000) {
+                    geocoder.geocode({ 'address': destinations[j] }, function (results, status) {
+                        if (status == 'OK') {
+                            map.setCenter(results[0].geometry.location);
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: results[0].geometry.location,
+                                icon: image,
+                                shape: shape,
+                                title: destinations[j]
+                            });
+                        } else {
+                            alert('Geocode was not successful for the following reason: ' + status);
+                        }
+                    });
+
+                }
+                console.log(distance);
+                console.log(destinations[j]);
+                setMapOnAll(markers);
+
+            }
+        }
+
     }
 
 }
 
 
-var service = new google.maps.DistanceMatrixService();
-service.getDistanceMatrix(
-    {
-        origins: origin,
-        destinations: destination,
-        travelMode: 'DRIVING',
-        drivingOptions: {
-            departureTime: new Date(Date.now()),
-            trafficModel: 'bestguess'
-        },
-        unitSystem: google.maps.UnitSystem.METRIC,
-        avoidHighways: true,
-        avoidTolls: true,
-    }, callback);
-
-
-
-function callback(response, status) {
-    console.log(response);
-    console.log(status);
-
-    if (status == 'OK') {
-
-        var destinations = response.destinationAddresses;
-
-        var results = response.rows[0].elements;
-        for (var j = 0; j < results.length; j++) {
-            var element = results[j];
-            var distance = element.distance.value;
-
-            if (distance < 3000) {
-                geocoder.geocode({ 'address': destinations[j] }, function (results, status) {
-                    if (status == 'OK') {
-                        map.setCenter(results[0].geometry.location);
-                        var marker = new google.maps.Marker({
-                            map: map,
-                            position: results[0].geometry.location,
-                            icon: image,
-                            shape: shape,
-                            title: destinations[j]
-                        });
-                    } else {
-                        alert('Geocode was not successful for the following reason: ' + status);
-                    }
-                });
-
-            }
-            console.log(distance);
-            console.log(destinations[j]);
-
-        }
-
+function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
     }
+}
 
+function clearMarkers() {
+    setMapOnAll(null);
+}
+
+function deleteMarkers() {
+    clearMarkers();
+    markers = [];
 }
