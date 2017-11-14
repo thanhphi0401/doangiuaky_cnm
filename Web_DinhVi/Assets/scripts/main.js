@@ -1,5 +1,6 @@
 ﻿var geocoder;
 var map;
+var markers = [];
 
 var motorbikes = [];
 
@@ -83,6 +84,7 @@ function saveDatabase(key, biensoxe, chuxe, diachi, kinhdo, vido, loaixe, status
 
 
 function codeAddress(address) {
+    deleteMarkers();
 
     geocoder.geocode({ 'address': address }, function (results, status) {
         if (status == 'OK') {
@@ -91,6 +93,8 @@ function codeAddress(address) {
                 map: map,
                 position: results[0].geometry.location
             });
+            markers.push(marker);
+
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }
@@ -156,8 +160,7 @@ function codeAddress(address) {
 
 
     function callback(response, status) {
-        console.log(response);
-        console.log(status);
+
 
         if (status == 'OK') {
 
@@ -167,8 +170,8 @@ function codeAddress(address) {
             for (var j = 0; j < results.length; j++) {
                 var element = results[j];
                 var distance = element.distance.value;
-
-                if (distance < 3000) {
+                var title = destinations[j];
+                if (distance < 2000) {
                     geocoder.geocode({ 'address': destinations[j] }, function (results, status) {
                         if (status == 'OK') {
                             map.setCenter(results[0].geometry.location);
@@ -177,8 +180,10 @@ function codeAddress(address) {
                                 position: results[0].geometry.location,
                                 icon: image,
                                 shape: shape,
-                                title: destinations[j]
+                                title: title
                             });
+                            markers.push(marker);
+
                         } else {
                             alert('Geocode was not successful for the following reason: ' + status);
                         }
@@ -187,11 +192,25 @@ function codeAddress(address) {
                 }
                 console.log(distance);
                 console.log(destinations[j]);
-
+                setMapOnAll(markers);
             }
 
         }
 
     }
 
+}
+function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
+}
+
+function clearMarkers() {
+    setMapOnAll(null);
+}
+
+function deleteMarkers() {
+    clearMarkers();
+    markers = [];
 }
