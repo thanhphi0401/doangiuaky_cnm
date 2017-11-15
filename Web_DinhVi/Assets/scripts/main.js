@@ -36,25 +36,6 @@ function initialize() {
 
 }
 
-loadUnlocatedCustomer = function () {
-    var textVal = document.getElementById('testVal');
-    var customerRef = database.ref('customer');
-    var i = 2;
-    customerRef.on("child_added", retVal => {
-        var status = retVal.child("status").val();
-        var address = retVal.child("address").val();
-        var customerName = retVal.child("customerName").val();
-        var telephone = retVal.child("telephone").val();
-
-        if (status == "0") {
-            $("#selection").append("<option value=" + i + ">" + address + "</option>");
-            i++;
-        }
-
-
-    });
-}
-
 // load dữ liệu chat lịch sử
 function loadData() {
 
@@ -122,8 +103,7 @@ var loadUnlocatedCustomer = function () {
         var address = retVal.child("address").val();
         var customerName = retVal.child("customerName").val();
         var telephone = retVal.child("telephone").val();
-
-
+        
         //add html code
         if (status == "0") {
             $("#selection").append("<option value=" + address + ">" + address + "</option>");

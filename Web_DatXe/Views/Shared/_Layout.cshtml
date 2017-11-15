@@ -8,7 +8,14 @@
     <link href="/Assets/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/Assets/Site.css" rel="stylesheet" />
     <style>
+        /*css of login form*/
+        body {
+            padding-top: 100px;
+        }
         /*Contact sectiom*/
+        #btnLogOut{
+            margin-top:5px;
+        }
         .content-header {
             font-family: 'Oleo Script', cursive;
             color: #fcc500;
@@ -87,8 +94,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                   
 
                 </ul>
+                <button id="btnLogOut" class="btn btn-primary pull-right">Log Out</button>
             </div>
         </div>
     </div>
@@ -125,7 +134,7 @@
     </script>
 
     <script src="/Assets/scripts/main.js"></script>
-
+    <script src="/Assets/scripts/loginScript.js"></script>
     
 </body>
 </html>

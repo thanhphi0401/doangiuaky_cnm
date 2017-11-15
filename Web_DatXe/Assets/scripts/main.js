@@ -28,6 +28,15 @@ var vm = new Vue({
 
 // thiết lập xác thực firebase with google
 var database = firebase.database();
+const auth = firebase.auth();
+
+//add logout event
+btnLogOut.addEventListener('click', e => {
+    auth.signOut();
+    window.location.href = 'Index1';
+})
+
+
 function checkSetup() {
     if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
         window.alert('You have not configured and imported the Firebase SDK. ' +
@@ -43,7 +52,8 @@ function saveMessage(a, b, c, d) {
         customerName: a,
         address: d,
         type: c,
-        telephone: b
+        telephone: b,
+        status:"0"
     }).then(function () {
         bootbox.alert("Thêm thành công");
 
