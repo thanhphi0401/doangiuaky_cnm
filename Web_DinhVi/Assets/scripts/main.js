@@ -3,9 +3,8 @@ var map;
 var markers = [];
 
 var motorbikes = [];
-
-//load danh sách xe và hiển thị bản đồ
-
+var customers = [];
+var serviceDistance;
 
 // thiết lập xác thực firebase with google
 var database = firebase.database();
@@ -30,33 +29,17 @@ function initialize() {
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
     loadUnlocatedCustomer();
+    loadDataMotorbike();
 
+    //setTimeout(function () {
+    //    loadListDinhVi();
 
-    loadData();
+    //}, 1000);
 
 }
 
-loadUnlocatedCustomer = function () {
-    var textVal = document.getElementById('testVal');
-    var customerRef = database.ref('customer');
-    var i = 2;
-    customerRef.on("child_added", retVal => {
-        var status = retVal.child("status").val();
-        var address = retVal.child("address").val();
-        var customerName = retVal.child("customerName").val();
-        var telephone = retVal.child("telephone").val();
 
-        if (status == "0") {
-            $("#selection").append("<option value=" + i + ">" + address + "</option>");
-            i++;
-        }
-
-
-    });
-}
-
-// load dữ liệu chat lịch sử
-function loadData() {
+function loadDataMotorbike() {
 
     this.messagesRef = this.database.ref('motorbike');
 
@@ -73,6 +56,8 @@ function loadData() {
     this.messagesRef.limitToLast(100).on('child_added', setMessage);
     this.messagesRef.limitToLast(100).on('child_changed', setMessage);
 
+
+
 };
 
 function saveDatabase(key, biensoxe, chuxe, diachi, kinhdo, vido, loaixe, status) {
@@ -85,53 +70,69 @@ function saveDatabase(key, biensoxe, chuxe, diachi, kinhdo, vido, loaixe, status
 }
 
 
-function codeAddress(address) {
+var loadUnlocatedCustomer = function () {
+    this.messagesRef = this.database.ref('customer');
 
-    deleteMarkers();
+    this.messagesRef.off();
 
-    geocoder.geocode({ 'address': address }, function (results, status) {
-        if (status == 'OK') {
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-            markers.push(marker);
 
-        } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-        }
-    });
+    var setMessage = function (data) {
+        var val = data.val();
+
+        this.saveCustomerData(data.key, val.address, val.customerName, val.status, val.telephone, val.type);
+
+    }.bind(this);
+
+    this.messagesRef.on('child_added', setMessage);
+    this.messagesRef.on('child_changed', setMessage);
+    this.messagesRef.on('child_removed', setMessage);//không xét tới
+
 
 }
 
-var loadUnlocatedCustomer = function () {
-    var textVal = document.getElementById('testVal');
-    var customerRef = database.ref('customer');
+function saveCustomerData(key, address, customerName, status, tel, type) {
+    var data = [key, address, customerName, status, tel, type];
 
-    //delete all selection
-    var select = document.getElementById("selection");
-    var length = select.options.length;
-    for (i = 0; i < length; i++) {
-        select.options[i] = null;
+    if (status == "0") {
+        customers.push(data);
+
+        $('#selection').append($('<option>', {
+            value: data[0],
+            text: data[1]
+        }));
+        //setTimeout(function () {
+        //    console.log(customers.length);
+
+        //}, 1000);
+    }
+    else if (status == "1") {
+        //khi định vị xong là change từ 0->1 (child_changed)
+        //xóa khỏi select option list và customers
+
+        $("#selection option[value=" + key + "]").remove();
+
+        
     }
 
-    //retrieve data from firebase
-    customerRef.on("child_added", retVal => {
-        var status = retVal.child("status").val();
-        var address = retVal.child("address").val();
-        var customerName = retVal.child("customerName").val();
-        var telephone = retVal.child("telephone").val();
-
-
-        //add html code
-        if (status == "0") {
-            $("#selection").append("<option value=" + address + ">" + address + "</option>");
-
-        }
-    });
 }
+
+function loadListDinhVi() {
+    //load vô list
+    for (var i = 0; i < customers.length; i++) {
+
+        var customer = customers[i];
+
+        $('#selection').append($('<option>', {
+            value: customer[1],
+            text: customer[1]
+        }));
+
+    }
+}
+
+
 //ham xu ly su kien khi nguoi dung click nut xac dinh
+
 function submitAddress() {
     //get selected text in dropdown list using javascript
     var datalist = document.getElementById('selection');
@@ -165,107 +166,123 @@ function submitAddress() {
 }
 
 
-var image = {
-    url: "/Assets/moto.png",
-    // This marker is 20 pixels wide by 32 pixels high.
-    size: new google.maps.Size(20, 32),
-    // The origin for this image is (0, 0).
-    origin: new google.maps.Point(0, 0),
-    // The anchor for this image is the base of the flagpole at (0, 32).
-    anchor: new google.maps.Point(0, 32)
-};
-
-var shape = {
-    coords: [1, 1, 1, 20, 18, 20, 18, 1],
-    type: 'poly'
-};
-var origin = new Array();
-origin.push(address);
-
-var destination = new Array();
-for (var i = 0; i < motorbikes.length; i++) {
-    var motorbike = motorbikes[i];
-
-    //showw toan bo xe
-
-    function callback(response, status) {
+function codeAddress(address) {
 
 
-        //var marker = new google.maps.Marker({
-        //    position: { lat: parseFloat(motorbike[4]), lng: parseFloat(motorbike[3]) },
-        //    map: map,
-        //    icon: image,
-        //    shape: shape,
-        //    title: motorbike[1]
-        //    //zIndex: beach[3]
-        //});
+    deleteMarkers();
 
-        //show 10 xe gan nhat: 300m-600m-1km
-
-        if (motorbike[6] == "1") {
-            var a = new google.maps.LatLng(parseFloat(motorbike[4]), parseFloat(motorbike[3]));
-            destination.push(a);
-        }
-
-    }
-
-
-    var service = new google.maps.DistanceMatrixService();
-    service.getDistanceMatrix(
-        {
-            origins: origin,
-            destinations: destination,
-            travelMode: 'DRIVING',
-            drivingOptions: {
-                departureTime: new Date(Date.now()),
-                trafficModel: 'bestguess'
-            },
-            unitSystem: google.maps.UnitSystem.METRIC,
-            avoidHighways: true,
-            avoidTolls: true,
-        }, callback);
-
-
-
-    function callback(response, status) {
-        console.log(response);
-        console.log(status);
-
+    geocoder.geocode({ 'address': address }, function (results, status) {
         if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+            markers.push(marker);
 
-            var destinations = response.destinationAddresses;
+            var image = {
+                url: "/Assets/moto.png",
+                // This marker is 20 pixels wide by 32 pixels high.
+                size: new google.maps.Size(20, 32),
+                // The origin for this image is (0, 0).
+                origin: new google.maps.Point(0, 0),
+                // The anchor for this image is the base of the flagpole at (0, 32).
+                anchor: new google.maps.Point(0, 32)
+            };
 
-            var results = response.rows[0].elements;
-            for (var j = 0; j < results.length; j++) {
-                var element = results[j];
-                var distance = element.distance.value;
+            var shape = {
+                coords: [1, 1, 1, 20, 18, 20, 18, 1],
+                type: 'poly'
+            };
+            var origin = new Array();
+            origin.push(address);
 
-                if (distance < 3000) {
-                    geocoder.geocode({ 'address': destinations[j] }, function (results, status) {
-                        if (status == 'OK') {
-                            map.setCenter(results[0].geometry.location);
-                            var marker = new google.maps.Marker({
-                                map: map,
-                                position: results[0].geometry.location,
-                                icon: image,
-                                shape: shape,
-                                title: destinations[j]
-                            });
-                        } else {
-                            alert('Geocode was not successful for the following reason: ' + status);
-                        }
-                    });
+            var destination = new Array();
+            for (var i = 0; i < motorbikes.length; i++) {
+                var motorbike = motorbikes[i];
 
+                //showw toan bo xe
+                //var marker = new google.maps.Marker({
+                //    position: { lat: parseFloat(motorbike[4]), lng: parseFloat(motorbike[3]) },
+                //    map: map,
+                //    icon: image,
+                //    shape: shape,
+                //    title: motorbike[1]
+                //    //zIndex: beach[3]
+                //});
+
+                //show 10 xe gan nhat: 300m-600m-1km
+
+                if (motorbike[6] == "1") {
+                    var a = new google.maps.LatLng(parseFloat(motorbike[4]), parseFloat(motorbike[3]));
+                    destination.push(a);
                 }
-                console.log(distance);
-                console.log(destinations[j]);
-                setMapOnAll(markers);
+
+
+            }
+
+
+            serviceDistance = new google.maps.DistanceMatrixService();
+            serviceDistance.getDistanceMatrix(
+                {
+                    origins: origin,
+                    destinations: destination,
+                    travelMode: 'DRIVING',
+                    drivingOptions: {
+                        departureTime: new Date(Date.now()),
+                        trafficModel: 'bestguess'
+                    },
+                    unitSystem: google.maps.UnitSystem.METRIC,
+                    avoidHighways: true,
+                    avoidTolls: true,
+                }, addAllMotorbikeMarker);
+
+
+            function addAllMotorbikeMarker(response, status) {
+                //console.log(response);
+                //console.log(status);
+                if (status == 'OK') {
+
+                    var destinations = response.destinationAddresses;
+
+                    var results = response.rows[0].elements;
+                    for (var j = 0; j < results.length; j++) {
+                        var element = results[j];
+                        var distance = element.distance.value;
+
+                        if (distance < 3000) {
+                            geocoder.geocode({ 'address': destinations[j] }, function (results, status) {
+                                if (status == 'OK') {
+                                    map.setCenter(results[0].geometry.location);
+                                    var marker = new google.maps.Marker({
+                                        map: map,
+                                        position: results[0].geometry.location,
+                                        icon: image,
+                                        shape: shape,
+                                        title: destinations[j]
+                                    });
+                                }
+                                else {
+                                    alert('Geocode was not successful for the following reason: ' + status);
+                                }
+                            });
+
+                        }
+                        //console.log(distance);
+                        //console.log(destinations[j]);
+                        setMapOnAll(markers);
+
+                    }
+                }
 
             }
         }
+        else {
+            alert('Không tìm thấy !');
+            console.log(status);
+        }
 
-    }
-
+    });
 }
 
 

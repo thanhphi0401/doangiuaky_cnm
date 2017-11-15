@@ -43,7 +43,8 @@ function saveMessage(a, b, c, d) {
         customerName: a,
         address: d,
         type: c,
-        telephone: b
+        telephone: b,
+        status: "0"
     }).then(function () {
         bootbox.alert("Thêm thành công");
 

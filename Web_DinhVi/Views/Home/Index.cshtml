@@ -7,14 +7,16 @@
 
 
 <div  id="floating-panel">
-    <input id="address" type="text" value="512 cách mạng tháng 8">
+    @*<input id="address" type="text" value="512 cách mạng tháng 8">
     <input type="button" value="Encode" onclick="codeAddress($('#address').val())">
-    <br>
+    <br>*@
 
-    <select v-model="type" class="form-control" id="selection">
-        <option value="1" selected>Khách chưa xử lý</option>
+    <select  v-model="type" class="form-control" id="selection">
+        <option value="0" selected>=====Danh sách cần định vị=====</option>
+
     </select>
-    <input type="button" value="Xác định" onclick="submitAddress()">
+    <input type="button" value="Xác định" onclick="codeAddress($('#selection option:selected').text())">
+
 </div>
 
 
