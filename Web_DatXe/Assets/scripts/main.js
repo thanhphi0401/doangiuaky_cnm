@@ -33,7 +33,7 @@ const auth = firebase.auth();
 //add logout event
 btnLogOut.addEventListener('click', e => {
     auth.signOut();
-    window.location.href = 'Index1';
+    window.location.href = 'http://localhost:52398/Home/Index1';
 })
 
 
