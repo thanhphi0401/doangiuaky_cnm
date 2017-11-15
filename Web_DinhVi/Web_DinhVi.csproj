@@ -2856,7 +2856,9 @@
     <Content Include="Assets\fuctions\node_modules\xtend\mutable.js" />
     <Content Include="Assets\fuctions\node_modules\xtend\test.js" />
     <Content Include="Assets\jquery-3.1.1.min.js" />
-    <Content Include="Assets\scripts\main.js" />
+    <Content Include="Assets\scripts\main.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Site.css" />
     <Content Include="Assets\vue-2.5.3.js" />
     <Content Include="favicon.ico" />
@@ -3370,7 +3372,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,11 +11,11 @@
     <input type="button" value="Encode" onclick="codeAddress($('#address').val())">
     <br>*@
 
-    <select  v-model="type" class="form-control" id="selection">
+    <select onchange="codeAddress($('#selection option:selected').text())"   class="form-control" id="selection">
         <option value="0" selected>=====Danh sách cần định vị=====</option>
 
     </select>
-    <input type="button" value="Xác định" onclick="codeAddress($('#selection option:selected').text())">
+    <input type="button" class="btn btn-danger" value="ĐỊNH VỊ" onclick="locate($('#selection').val())">
 
 </div>
 

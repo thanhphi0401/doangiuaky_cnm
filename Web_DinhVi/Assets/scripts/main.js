@@ -22,8 +22,14 @@ function initialize() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(10.8230989, 106.6296638);
     var mapOptions = {
-        zoom: 10,
-        center: latlng
+        zoom: 9,
+        center: latlng,
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true,
+        streetViewControl: true,
+        rotateControl: true,
+        fullscreenControl: true
     }
 
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -33,7 +39,6 @@ function initialize() {
 
     //setTimeout(function () {
     //    loadListDinhVi();
-
     //}, 1000);
 
 }
@@ -92,7 +97,7 @@ var loadUnlocatedCustomer = function () {
 
 function saveCustomerData(key, address, customerName, status, tel, type) {
     var data = [key, address, customerName, status, tel, type];
-
+  
     if (status == "0") {
         customers.push(data);
 
@@ -110,8 +115,6 @@ function saveCustomerData(key, address, customerName, status, tel, type) {
         //xóa khỏi select option list và customers
 
         $("#selection option[value=" + key + "]").remove();
-
-        
     }
 
 }
@@ -165,6 +168,31 @@ function submitAddress() {
     loadUnlocatedCustomer();
 }
 
+function updateMarkerPosition(latLng) {
+    //in ra vị trí trong quá trình drag
+
+    //console.log(latLng.lat() + "===" + latLng.lng());
+
+}
+function geocodePosition(pos) {
+   
+    console.log(pos.lat());
+
+    geocoder.geocode({
+        latLng: pos
+    }, function (responses) {
+        if (responses && responses.length > 0) {
+            //cập nhật lại dịa chỉ khách hàng
+            console.log(responses);
+            $('#selection option:selected').text(responses[0].formatted_address);
+            ////$('#selection option:selected').css('color', 'red');
+            //$('#selection').find('option:selected').css('color', 'red');
+            codeAddress(responses[0].formatted_address);
+        } else {
+            alert('Cannot determine address at this location.');
+        }
+    });
+}
 
 function codeAddress(address) {
 
@@ -174,11 +202,41 @@ function codeAddress(address) {
     geocoder.geocode({ 'address': address }, function (results, status) {
         if (status == 'OK') {
             map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
+            var markermain = new google.maps.Marker({
                 map: map,
-                position: results[0].geometry.location
+                draggable: true,
+                position: results[0].geometry.location,
+                title: address
             });
-            markers.push(marker);
+            map.setZoom(17);
+            map.setCenter(markermain.position);
+           
+            markers.push(markermain);
+
+            google.maps.event.addListener(markermain, 'click', function () {
+                map.setZoom(17);
+                map.setCenter(markermain.getPosition());
+            });
+         
+
+            //thêm sự kiện drag
+            google.maps.event.addListener(markermain, 'dragstart', function () {
+                //alert("dragstart");
+            });
+
+
+            google.maps.event.addListener(markermain, 'drag', function () {
+                // alert("drag");
+                // updateMarkerPosition(markermain.getPosition());
+            });
+
+            google.maps.event.addListener(markermain, 'dragend', function (endpoint) {
+                //alert("dragend");
+                map.setZoom(17);
+                map.setCenter(markermain.getPosition());
+                geocodePosition(endpoint.latLng);
+
+            });
 
             var image = {
                 url: "/Assets/moto.png",
@@ -250,7 +308,7 @@ function codeAddress(address) {
                         var element = results[j];
                         var distance = element.distance.value;
 
-                        if (distance < 3000) {
+                        if (distance < 2000) {
                             geocoder.geocode({ 'address': destinations[j] }, function (results, status) {
                                 if (status == 'OK') {
                                     map.setCenter(results[0].geometry.location);
@@ -261,6 +319,8 @@ function codeAddress(address) {
                                         shape: shape,
                                         title: destinations[j]
                                     });
+                                    markers.push(marker);
+
                                 }
                                 else {
                                     alert('Geocode was not successful for the following reason: ' + status);
@@ -285,8 +345,16 @@ function codeAddress(address) {
     });
 }
 
+function locate(key)//định vị điểm và gửi cho xe
+{
+    console.log(motorbikes);
+
+    // alert(key);
+
+}
 
 function setMapOnAll(map) {
+
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(map);
     }
