@@ -1,0 +1,17 @@
+{
+  "rules": {
+            "customer":{
+              
+              		".read": "root.child('admins/tongdaivien').hasChild(auth.uid)",
+    							".write": "root.child('admins/tongdaivien').hasChild(auth.uid)"
+            
+            },
+               "motorbike":{
+              
+              		".read": "root.child('admins/dinhvivien').hasChild(auth.uid)",
+    							".write": "root.child('admins/dinhvivien').hasChild(auth.uid)"
+            
+            },
+    
+  }
+}
