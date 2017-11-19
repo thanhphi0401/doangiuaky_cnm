@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Wen_TheoDoi")]
+[assembly: AssemblyTitle("Web_TheoDoi")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Wen_TheoDoi")]
+[assembly: AssemblyProduct("Web_TheoDoi")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d68962be-3691-4bd8-87ab-c1a1958a48a5")]
+[assembly: Guid("a28440cb-217d-4432-be1b-87bdfbfb065f")]
 
 // Version information for an assembly consists of the following four values:
 //

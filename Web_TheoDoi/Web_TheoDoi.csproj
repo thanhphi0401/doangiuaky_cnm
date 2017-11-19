@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{69AB2D51-05CD-4A86-B021-573E12EF6A37}</ProjectGuid>
+    <ProjectGuid>{DA1285A2-D98F-41F2-BCC9-2694301C86D3}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wen_TheoDoi</RootNamespace>
-    <AssemblyName>Wen_TheoDoi</AssemblyName>
+    <RootNamespace>Web_TheoDoi</RootNamespace>
+    <AssemblyName>Web_TheoDoi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -220,9 +220,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>64759</DevelopmentServerPort>
+          <DevelopmentServerPort>54842</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:64759/</IISUrl>
+          <IISUrl>http://localhost:54842/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Wen_TheoDoi
+namespace Web_TheoDoi
 {
     public class BundleConfig
     {
