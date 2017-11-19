@@ -40,16 +40,3 @@ firebase.auth().onAuthStateChanged(firebaseUser=> {
     }
 });
 
-//add a realtime listener
-firebase.auth().onAuthStateChanged(firebaseUser => {
-    if (firebaseUser) {
-        console.log(firebaseUser);
-        console.log('logged in');
-        btnLogOut.classList.remove("hide");
-        // window.location.href = 'Index';
-    }
-    else {
-        console.log('not logged in');
-        btnLogOut.classList.add("hide");
-    }
-});

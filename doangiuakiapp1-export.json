@@ -1,18 +1,45 @@
 {
+	"grabinfo":{
+		 "0" : {
+		  "customer" : "0",
+		  "motobike" : "0",
+		  "date" : "2017-01-01",
+		  "status" : "1"
+		}
+	},
+  "admins" : {
+    "dinhvivien" : {
+      "7TNSsAE9J9ThamZcbZziD2YjdHo1" : "dinhvivien1@gmail.com",
+      "MdGVIMq7wkV5KQtUDCcM97e2d3D2" : "dinhvivien2@gmail.com",
+      "pG0p4QbvHqhSC3BkCqvydcyaeoW2" : "dinhvivien3@gmail.com"
+    },
+    "tongdaivien" : {
+      "0T197MDnHZbivWx0piupnTJPQGu1" : "tongdaivien3@gmail.com",
+      "2KurSGR0yZYGJYtYvKfAwRv2A8y2" : "tongdaivien2@gmail.com",
+      "dWCARDRlIudaMbOiMR3Wr2jlolm2" : "tongdaivien1@gmail.com"
+    }
+  },
   "customer" : {
-    "-KyjJwfPXEL6b8gqy3mw" : {
-      "address" : "khoa học tự nhiên",
-      "customerName" : "nguyễn hữu Phương",
+    "-KyvOgcvbrmfBl7B86Mc" : {
+      "address" : "bệnh viện quận 10, tphcm",
+      "customerName" : "test",
       "status" : "0",
-      "telephone" : "036953165",
+      "telephone" : "098411111",
       "type" : "1"
     },
-    "-KykwRGD8dW6PSIr2FIt" : {
-      "address" : "suối tiên",
-      "customerName" : "naruto",
+    "-Kyvek3zaCkgjTuZLXKQ" : {
+      "address" : "Bệnh viện chợ rẫy tphcm",
+      "customerName" : "Nguyễn Văn A",
       "status" : "0",
-      "telephone" : "6946552",
-      "type" : "2"
+      "telephone" : "01868641121",
+      "type" : "1"
+    },
+    "-Kz9Uy19PFMO_v5Fo6Sc" : {
+      "address" : "công viên nước đầm sen hồ chí minh",
+      "customerName" : "Lê Văn Thanh",
+      "status" : "0",
+      "telephone" : "0987161144",
+      "type" : "1"
     }
   },
   "motorbike" : [ null, {

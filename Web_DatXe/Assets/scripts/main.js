@@ -52,7 +52,8 @@ function saveMessage(a, b, c, d) {
         address: d,
         type: c,
         telephone: b,
-        status:"0"
+        status: "0"
+
     }).then(function () {
         bootbox.alert("Thêm thành công");
     }.bind(this)).catch(function (error) {
