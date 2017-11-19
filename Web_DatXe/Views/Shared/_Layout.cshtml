@@ -14,7 +14,13 @@
         }
         /*Contact sectiom*/
         #btnLogOut{
+            margin-left: 5px;
             margin-top:5px;
+        }
+
+        #userName{
+            margin-top:10px;
+            color: white;
         }
         .content-header {
             font-family: 'Oleo Script', cursive;
@@ -97,7 +103,11 @@
                    
 
                 </ul>
-                <button id="btnLogOut" class="btn btn-primary pull-right ">Log Out</button>
+                <div class="pull-right " id="logOutBlock">
+                    <span id="userName">Xin chào <span id="adminName"></span></span>
+                    <button id="btnLogOut"  class="btn btn-primary">Log Out</button>
+                </div>
+
             </div>
         </div>
     </div>

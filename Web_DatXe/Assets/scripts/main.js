@@ -36,7 +36,6 @@ btnLogOut.addEventListener('click', e => {
     window.location.href = 'http://localhost:52398/Home/Index1';
 })
 
-
 function checkSetup() {
     if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
         window.alert('You have not configured and imported the Firebase SDK. ' +
@@ -56,12 +55,8 @@ function saveMessage(a, b, c, d) {
         status:"0"
     }).then(function () {
         bootbox.alert("Thêm thành công");
-
     }.bind(this)).catch(function (error) {
         console.error('Error writing new message to Firebase Database', error);
         bootbox.alert("<span style='color:red;'>Có lỗi xảy ra. Vui lòng thử lại</span>");
     });
-
-
-
 };
