@@ -406,13 +406,10 @@ function pushgrabinfo(customer, motorbike, date, status) {
         date: date,
         motorbike: motorbike,
         status: "1"
-
     }).then(function () {
         bootbox.alert("Định vị thành công");
-
     }.bind(this)).catch(function (error) {
         console.error('Error writing new message to Firebase Database', error);
         bootbox.alert("<span style='color:red;'>Có lỗi xảy ra. Vui lòng thử lại</span>");
     });
-
 }
