@@ -4,19 +4,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model Web_DinhVi.Models.UserLogin
 
-
-<div  id="floating-panel">
+<div id="floating-panel">
     @*<input id="address" type="text" value="512 cách mạng tháng 8">
-    <input type="button" value="Encode" onclick="codeAddress($('#address').val())">
-    <br>*@
+        <input type="button" value="Encode" onclick="codeAddress($('#address').val())">
+        <br>*@
 
-    <select onchange="codeAddress($('#selection option:selected').text())"   class="form-control" id="selection">
+    <select onchange="codeAddress($('#selection option:selected').text())" class="form-control" id="selection">
         <option value="0" selected>=====Danh sách cần định vị=====</option>
 
     </select>
     <input type="button" class="btn btn-danger" value="ĐỊNH VỊ" onclick="locatesleep($('#selection').val())">
 
+
 </div>
 
+<div class="container" id="areauser">
+
+    <p>Welcome, @Model.Email</p>
+
+    <a href="/login/logout" class="btn btn-primary">Logout</a>
+</div>
 

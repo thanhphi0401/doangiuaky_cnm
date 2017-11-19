@@ -13,7 +13,7 @@ namespace Web_DatXe.Controllers
             return View();
         }
 
-        public ActionResult Index1()
+        public ActionResult Login()
         {
             return View("LoginView");
         }
