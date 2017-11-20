@@ -1,6 +1,7 @@
-﻿var logOutBlock = document.getElementById('logOutBlock');
+﻿
+var logOutBlock = document.getElementById('logOutBlock');
 var btnLogOut = document.getElementById('btnLogOut');
-
+var telephone = document.getElementById('telephone');
 var vm = new Vue({
     el: "#submitform",
     data: {
@@ -47,6 +48,33 @@ function checkSetup() {
     }
 };
 
+
+//get all record in firebase
+
+   window.arrUser = [];
+database.ref('customer').on('child_added', function(snap){
+ 
+    var temp={value: snap.val().telephone, address:snap.val().address};
+    arrUser.push(temp);
+   
+});
+ 
+console.log(arrUser);
+
+$('#telephone').autocomplete({
+   
+   lookup: arrUser,
+    onSelect: function (suggestion) {
+        alert('Bạn chọn: ' + suggestion.value+','+suggestion.address );
+        $('#address').val(suggestion.address);
+    }
+});
+
+
+
+
+
+
 function saveMessage(a, b, c, d) {
 
     this.customerRef = this.database.ref('customer');
@@ -64,3 +92,4 @@ function saveMessage(a, b, c, d) {
         bootbox.alert("<span style='color:red;'>Có lỗi xảy ra. Vui lòng thử lại</span>");
     });
 };
+
