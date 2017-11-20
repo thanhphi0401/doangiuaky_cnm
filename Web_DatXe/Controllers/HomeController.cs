@@ -18,5 +18,10 @@ namespace Web_DatXe.Controllers
             return View("LoginView");
         }
 
+        public ActionResult GetCustomerList()
+        {
+            return View("CustomerListView");
+        }
+
     }
 }

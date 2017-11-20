@@ -6,6 +6,14 @@ var btnSignUp = document.getElementById('btn-register');
 var logOutBlock = document.getElementById('logOutBlock');
 var btnLogOut = document.getElementById('btnLogOut');
 var adminName = document.getElementById('adminName');
+var btnCustomerList = document.getElementById('btnCustomerList');
+
+//add btncustomerList Event
+if (btnCustomerList) {
+    btnCustomerList.addEventListener('click', e => {
+        window.location.href = 'http://localhost:52398/Home/GetCustomerList';
+    });
+}
 
 //add login event
 if (btnLogIn) {
