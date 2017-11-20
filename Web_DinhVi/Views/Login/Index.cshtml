@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Assets/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/Login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            @*@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @name = "Login_Form", @class = "form-signin" }))
+            {
+                <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+                <hr class="colorgraph"><br>
+
+                @Html.TextBoxFor(model => model.Emai, new { @class = "form-control", @type = "email", @name = "Email", @require = "true", @placeholder = "abc@gmail.com" })
+
+                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password", @name = "Password", @require = "true" })
+
+                <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit">Login</button>
+
+            }*@
+
+            <form action="" method="post" name="Login_Form" class="form-signin">
+                <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+                <hr class="colorgraph"><br>
+
+                <input type="email" class="form-control" name="Email" placeholder="abc@gmail.com" required="" autofocus="" />
+                <input type="password" class="form-control" name="Password" placeholder="Password" required="" />
+
+                <button class="btn btn-lg btn-primary btn-block" id="loginbutton" value="Login" type="Submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <script src="~/Assets/jquery-3.1.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBPRUwT-TI81VkXmC_MReaj8msT-8NTxEY",
+            authDomain: "doangiuakiapp1.firebaseapp.com",
+            databaseURL: "https://doangiuakiapp1.firebaseio.com",
+            projectId: "doangiuakiapp1",
+            storageBucket: "doangiuakiapp1.appspot.com",
+            messagingSenderId: "208748898412"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="~/Assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Assets/scripts/loginajax.js"></script>
+</body>
+</html>

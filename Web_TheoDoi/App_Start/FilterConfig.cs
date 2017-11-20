@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Wen_TheoDoi
+namespace Web_TheoDoi
 {
     public class FilterConfig
     {

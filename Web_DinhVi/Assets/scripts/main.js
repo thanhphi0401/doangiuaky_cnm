@@ -383,6 +383,7 @@ function locate(key)//định vị điểm và gửi cho xe
 
 }
 
+
 function setMapOnAll(map) {
 
     for (var i = 0; i < markers.length; i++) {

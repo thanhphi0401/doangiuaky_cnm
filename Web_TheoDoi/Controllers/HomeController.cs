@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Wen_TheoDoi.Controllers
+namespace Web_TheoDoi.Controllers
 {
     public class HomeController : Controller
     {

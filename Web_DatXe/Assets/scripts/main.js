@@ -1,4 +1,6 @@
-﻿
+﻿var logOutBlock = document.getElementById('logOutBlock');
+var btnLogOut = document.getElementById('btnLogOut');
+
 var vm = new Vue({
     el: "#submitform",
     data: {
@@ -33,7 +35,8 @@ const auth = firebase.auth();
 //add logout event
 btnLogOut.addEventListener('click', e => {
     auth.signOut();
-    window.location.href = 'http://localhost:52398/Home/Index1';
+
+    window.location.href = 'http://localhost:52398/Login/Login';
 })
 
 function checkSetup() {
