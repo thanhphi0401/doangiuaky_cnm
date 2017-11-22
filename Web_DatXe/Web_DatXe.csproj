@@ -185,6 +185,7 @@
     <Content Include="Assets\bootstrap-3.3.7\js\bootstrap.min.js" />
     <Content Include="Assets\bootstrap-3.3.7\js\npm.js" />
     <Content Include="Assets\jquery-3.1.1.min.js" />
+    <Content Include="Assets\jquery.autocomplete.min.js" />
     <Content Include="Assets\scripts\loginScript.js" />
     <Content Include="Assets\scripts\main.js" />
     <Content Include="Assets\vue-2.5.3.js" />
