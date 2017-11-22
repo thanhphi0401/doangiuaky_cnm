@@ -56,7 +56,7 @@ namespace Web_DinhVi.Controllers
 
         }
         
-        [HttpPost]
+        
         public ActionResult Logout()
         {
             Session.Clear();

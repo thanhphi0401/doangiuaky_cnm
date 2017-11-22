@@ -2,16 +2,20 @@
   "rules": {
             "customer":{
               
-              		".read": "root.child('admins/tongdaivien').hasChild(auth.uid)",
-    							".write": "root.child('admins/tongdaivien').hasChild(auth.uid)"
+              ".write": "auth!=null",
+              ".read": "auth!=null"
             
-            },
+            },          
                "motorbike":{
               
+             
               		".read": "root.child('admins/dinhvivien').hasChild(auth.uid)",
     							".write": "root.child('admins/dinhvivien').hasChild(auth.uid)"
-            
             },
+      		"grabinfo":{
+            		".read": "root.child('admins/dinhvivien').hasChild(auth.uid)",
+    							".write": "root.child('admins/dinhvivien').hasChild(auth.uid)"
+						}
     
   }
 }
