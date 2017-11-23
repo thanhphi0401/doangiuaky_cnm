@@ -1,12 +1,13 @@
-﻿var geocoder;
-var map;
+﻿var directionsService;
+var directionsDisplay;
 
 
 var grabinfo = [];
 var motorbikegrab = [];
 var customergrab = [];
-var listcustomer = [];
 
+var listcustomer = [];
+var listmotorbike = [];
 
 var serviceDistance;
 
@@ -22,12 +23,27 @@ function checkSetup() {
 
 
 function initialize() {
+    directionsService = new google.maps.DirectionsService;
+    directionsDisplay = new google.maps.DirectionsRenderer;
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: { lat: 10.8230989, lng: 106.6296638 }
+    });
+    directionsDisplay.setMap(map);
+
+    $("#mymap").on("shown.bs.modal", function () {
+        google.maps.event.trigger(map, "resize");
+    });
+
 
     loadListCustomer();
+    loadListMotorbike();
 
     loadDataGrabInfo();
 
-
+    //setTimeout(function () {
+    //    loadTable();
+    //}, 1500);
 }
 
 function loadListCustomer() {
@@ -39,8 +55,29 @@ function loadListCustomer() {
     var setMessage = function (data) {
         var val = data.val();
 
-        var data = [data.key, val.customerName, val.telephone, val.status, val.type, val.address];
-        listcustomer.push(data);
+        var customer = [data.key, val.customerName, val.telephone, val.status, val.type, val.address];
+        listcustomer.push(customer);
+        //add vô table luôn
+        addTable(customer);
+
+    }.bind(this);
+
+
+    this.messagesRef.on('child_added', setMessage);
+    this.messagesRef.on('child_changed', setMessage);
+}
+
+function loadListMotorbike() {
+    this.messagesRef = this.database.ref('motorbike');
+
+    this.messagesRef.off();
+
+
+    var setMessage = function (data) {
+        var val = data.val();
+
+        var data = [data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido];
+        listmotorbike.push(data);
     }.bind(this);
 
 
@@ -53,12 +90,11 @@ function loadDataGrabInfo() {
     this.messagesRef = this.database.ref('grabinfo');
 
     this.messagesRef.off();
-
-
     var setMessage = function (data) {
         var val = data.val();
 
         this.saveDatabaseGrab(data.key, val.customer, val.date, val.motorbike, val.status);
+
     }.bind(this);
 
 
@@ -71,122 +107,131 @@ function saveDatabaseGrab(key, customer, date, motorbike, status) {
 
     var data = [key, customer, date, motorbike, status];
     grabinfo.push(data);
-    loadCustomerInfo(customer);
-    loadmotorbikeInfo(motorbike);
 
-    setTimeout(function () {
-        loadTable();
-
-    }, 2000);
-
-
-}
-
-var loadCustomerInfo = function (customer) {
-
-    var customerRef = this.database.ref('customer');
-
-    this.messagesRef.off();
-    var data;
-    customerRef.on("child_added", retVal => {
-        var childKey = retVal.key;
-        if (childKey == customer) {
-
-            data = [retVal.val().customerName, retVal.val().address, retVal.val().type, retVal.val().telephone];
-            customergrab.push(data);
-        }
-
-    });
-
-
-}
-var loadmotorbikeInfo = function (motorbike) {
-
-    var motorbikeRef = this.database.ref('motorbike');
-
-    this.messagesRef.off();
-    var data;
-    motorbikeRef.on("child_added", retVal => {
-        var childKey = retVal.key;
-        if (childKey == motorbike) {
-
-            data = [retVal.val().biensoxe, retVal.val().chuxe, retVal.val().diachi, retVal.val().kinhdo,
-                 retVal.val().vido, retVal.val().loaixe];
-            motorbikegrab.push(data);
-        }
-
-    });
-
-
+    //update trạng thái table
+    updateTable(data);
 
 }
 
 
 
-function loadTable() {
+function addTable(customer) {
+    //tính cả trường hợp gọi lại
 
-    
+    if (customer[3] == "0")//chưa đc định vị
+    {
+        $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
+            <td>" + "" + "</td>\
+            <td>" + customer[5] + "</td>\
+            <td>" + (customer[2] == "1" ? "Thường" : "Premium") + "</td>\
+            <td>" + customer[2] + "</td>\
+            <td style='color:red'>" + "Chưa định vị" + "</td>\
+            <td>" + "" + "</td>\
+            <td>" + "" + "</td>\
+            <td>" + "" + "</td>\
+            </tr>");
+    }
+    else {
+        //đã được định vị, lấy thông tin grab
+        var currentGrab = getCurrentGrab(customer[0]);
+        if (currentGrab[3]) {//đã có xe
+            var currentMotor = getCurrentMotor(currentGrab[3]);
 
-    $("#infograb tr:gt(0)").remove();
+            $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
+                <td>" + getMMDDYY(currentGrab[2]) + "</td>\
+                <td>" + customer[5] + "</td>\
+                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
+                <td>" + customer[2] + "</td>\
+                <td style='color:green'>" + "Đã có xe" + "</td>\
+                <td>" + currentMotor[2] + "</td>\
+                <td>" + currentMotor[1] + "</td>\
+                <td>" + "<a class='btn btn-primary direction' href='javascript:void(0)'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
+                </tr>");
 
-    for (var i = 0; i < grabinfo.length; i++) {
-        var customer = customergrab[i];
-        var motorbike = motorbikegrab[i];
-        var grab = grabinfo[i];
-
-        if (grab[3] != "" || (grab[3]) != null)//đã có xe
-        {
-            $("#detailgrab").append("<tr><td>" + customer[0] + "</td>\
-<td>" + getMMDDYY(grab[2]) + "</td>\
-<td>" + customer[1] + "</td>\
-<td>" + (customer[2] == "1" ? "Thường" : "Premium") + "</td>\
-<td>" + customer[3] + "</td>\
-<td>" + "Đã có xe" + "</td>\
-<td>" + motorbike[1] + "</td>\
-<td>" + motorbike[0] + "</td>\
-<td>" + "<a class='btn btn-primary' data-id=" + grab[0] + ">View Map</a>" + "</td>\
-</tr>");
         }
-        else { //chua có xe
-            $("#detailgrab").append("<tr><td>" + customer[0] + "</td>\
-<td>" + getMMDDYY(grab[2]) + "</td>\
-<td>" + customer[1] + "</td>\
-<td>" + (customer[2] == "1" ? "Thường" : "Premium") + "</td>\
-<td>" + customer[3] + "</td>\
-<td>" + "Đã định vị" + "</td>\
-</tr>");
+        else {//chưa có xe
+
+            $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
+                <td>" + getMMDDYY(currentGrab[2]) + "</td>\
+                <td>" + customer[5] + "</td>\
+                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
+                <td>" + customer[2] + "</td>\
+                <td style='color:blue'>" + "Đã định vị" + "</td>\
+  <td>" + "" + "</td>\
+            <td>" + "" + "</td>\
+            <td>" + "" + "</td>\
+                </tr>");
         }
 
     }
 
-    //load danh sách khách hàng còn lại
+}
+
+function updateTable(grabinfo) {
+    //get row
+    //get customer info
+    var customer = getCurrentCustomer(grabinfo[1]);
+    var row = "#" + grabinfo[1];
+    $(row).remove();
+
+
+    if (grabinfo[3]) {//đã có xe
+        var currentMotor = getCurrentMotor(grabinfo[3]);
+        $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
+                <td>" + getMMDDYY(grabinfo[2]) + "</td>\
+                <td>" + customer[5] + "</td>\
+                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
+                <td>" + customer[2] + "</td>\
+                <td style='color:green'>" + "Đã có xe" + "</td>\
+                <td>" + currentMotor[2] + "</td>\
+                <td>" + currentMotor[1] + "</td>\
+                <td>" + "<a class='btn btn-primary direction' href='javascript:void(0)' data-toggle='modal' data-target='#mymap'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
+                </tr>");
+
+    }
+    else {
+        $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
+                <td>" + getMMDDYY(grabinfo[2]) + "</td>\
+                <td>" + customer[5] + "</td>\
+                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
+                <td>" + customer[2] + "</td>\
+                <td style='color:blue'>" + "Đã định vị" + "</td>\
+  <td>" + "" + "</td>\
+            <td>" + "" + "</td>\
+            <td>" + "" + "</td>\
+                </tr>");
+    }
+
+}
+
+
+function getCurrentCustomer(key) {
     for (var i = 0; i < listcustomer.length; i++) {
-        var customer = listcustomer[i];
-        if (!checkCustomer(customer[0])) {
-            $("#detailgrab").append("<tr><td>" + customer[1] + "</td>\
-<td>" + "" + "</td>\
-<td>" + customer[5] + "</td>\
-<td>" + (customer[2] == "1" ? "Thường" : "Premium") + "</td>\
-<td>" + customer[2] + "</td>\
-<td>" + "Chưa định vị" + "</td>\
-<td>" + "" + "</td>\
-<td>" + "" + "</td>\
-<td>" + "" + "</td>\
-</tr>");
-        }
-    }
-}
-function checkCustomer(customer) {
-    for (var i = 0; i < grabinfo.length; i++) {
-        var grab = grabinfo[i];
-        if (customer == grab[1])//đã có trong grabinfo
-        {
-            return true;
 
+        if (listcustomer[i][0] == key) {
+            return listcustomer[i];
         }
     }
-    return false;
 }
+
+function getCurrentGrab(key) {
+    for (var i = 0; i < grabinfo.length; i++) {
+
+        if (grabinfo[i][1] == key) {
+            return grabinfo[i];
+        }
+    }
+
+}
+function getCurrentMotor(key) {
+    for (var i = 0; i < listmotorbike.length; i++) {
+
+        if (listmotorbike[i][0] == key) {
+            return listmotorbike[i];
+        }
+    }
+}
+
 function getMMDDYY(ticks) {
     var date = new Date(ticks);
     var mm = date.getMonth() + 1;
@@ -195,4 +240,22 @@ function getMMDDYY(ticks) {
     if (mm < 10) mm = "0" + mm;
     if (dd < 10) dd = "0" + dd;
     return "" + mm + "/" + dd + "/" + +yy;
+}
+
+
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay, p1, p2) {
+
+    directionsService.route({
+        origin: p1,
+        destination: p2,
+        travelMode: 'DRIVING'
+    }, function (response, status) {
+        if (status === 'OK') {
+            console.log(response);
+            directionsDisplay.setDirections(response);
+        } else {
+            alert('Directions request failed due to ' + status);
+        }
+    });
 }
