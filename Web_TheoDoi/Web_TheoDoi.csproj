@@ -2857,8 +2857,11 @@
     <Content Include="Assets\fuctions\node_modules\xtend\test.js" />
     <Content Include="Assets\jquery-3.1.1.min.js" />
     <Content Include="Assets\Login.css" />
+    <Content Include="Assets\main.js" />
     <Content Include="Assets\moto.png" />
+    <Content Include="Assets\scripts\googlemap.js" />
     <Content Include="Assets\scripts\main.js" />
+    <Content Include="Assets\scripts\showdirection.js" />
     <Content Include="Assets\Site.css" />
     <Content Include="Assets\vue-2.5.3.js" />
     <Content Include="Content\bootstrap.css" />
@@ -3353,6 +3356,11 @@
     <Content Include="Assets\fuctions\node_modules\xtend\package.json" />
     <Content Include="Assets\fuctions\node_modules\xtend\README.md" />
     <Content Include="Assets\fuctions\package.json" />
+    <Content Include="webpack.config.js" />
+    <Content Include="Assets\App.vue" />
+    <Content Include="package.json" />
+    <Content Include="Assets\components\Login.vue" />
+    <Content Include="Assets\components\Index.vue" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

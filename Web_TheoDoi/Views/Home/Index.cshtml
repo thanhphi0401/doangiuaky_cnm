@@ -1,9 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+ 
+   
     <title>Theo dõi đặt xe</title>
     <link href="/Assets/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Assets/Site.css" rel="stylesheet" />
+
+    <link href="~/Assets/Login.css" rel="stylesheet" />
     <style>
         #map {
             height: 100%;
@@ -25,58 +29,20 @@
         }
     </style>
 </head>
-<body onload="initialize()">
-
-  
-    <div class="container">
+<body>
 
 
-        <h1 class="text-center" style="color:forestgreen">CHI TIẾT ĐẶT XE</h1>
 
-        <table id="infograb" border="1" class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Khách hàng</th>
-                    <th>Ngày đặt</th>
-                    <th>Điểm đón</th>
-                    <th>Loại xe</th>
-                    <th>Phone</th>
-                    <th>Trạng thái</th>
-                    <th>Tài xế</th>
-
-                    <th>Biển số</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="detailgrab"></tbody>
-        </table>
-
-    </div>
-
-    <!-- Modal -->
-    <div id="mymap" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Định tuyến xe đi</h4>
-                </div>
-                <div class="modal-body" id="map">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
     @*<div id="map"></div>*@
+
+    <div  id="app"></div>
+
 
     <script src="/Assets/jquery-3.1.1.min.js"></script>
     <script src="/Assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
+
+
 
     <script src="/Assets/bootbox.min.js"></script>
 
@@ -99,25 +65,30 @@
     </script>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkXZtUT0xV5xWjf39lS1de3qFybmlyRzA&callback=initMap"
-            async defer>
+    
+
+    @*<script src="~/Assets/scripts/main.js"></script>*@
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkXZtUT0xV5xWjf39lS1de3qFybmlyRzA&callback=initMap">
 
     </script>
-    <script src="~/Assets/scripts/main.js"></script>
+    <script src="/dist/build.js"></script>
 
-    <script>
+   
+   <script>
         $(document).ready(function () {
-
             $("tbody").off('click', 'a.direction').on("click", "a.direction", function () {
 
-                var btn = $(this);             
-                calculateAndDisplayRoute(directionsService, directionsDisplay, btn.data('ad1'), btn.data('ad2'));
+                var btn = $(this);         
+                
+                calculateAndDisplayRoute(btn.data('ad1'), btn.data('ad2'));
 
             });
 
         });
-    </script>
 
+
+    </script>
+    <script src="~/Assets/scripts/showdirection.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,15 @@
-﻿var directionsService;
+﻿
+//// Initialize Firebase
+//var config = {
+//    apiKey: "AIzaSyBPRUwT-TI81VkXmC_MReaj8msT-8NTxEY",
+//    authDomain: "doangiuakiapp1.firebaseapp.com",
+//    databaseURL: "https://doangiuakiapp1.firebaseio.com",
+//    projectId: "doangiuakiapp1",
+//    storageBucket: "doangiuakiapp1.appspot.com",
+//    messagingSenderId: "208748898412"
+//};
+//firebase.initializeApp(config);
+var directionsService;
 var directionsDisplay;
 
 
@@ -12,7 +23,8 @@ var listmotorbike = [];
 var serviceDistance;
 
 // thiết lập xác thực firebase with google
-var database = firebase.database();
+let  database = firebase.database();
+
 function checkSetup() {
     if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
         window.alert('You have not configured and imported the Firebase SDK. ' +
@@ -22,7 +34,7 @@ function checkSetup() {
 }
 
 
-function initialize() {
+export function initialize() {
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer;
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -47,9 +59,10 @@ function initialize() {
 }
 
 function loadListCustomer() {
-    this.messagesRef = this.database.ref('customer');
+   
+    firebase.messagesRef = database.ref('customer');
 
-    this.messagesRef.off();
+    firebase.messagesRef.off();
 
 
     var setMessage = function (data) {
@@ -63,14 +76,14 @@ function loadListCustomer() {
     }.bind(this);
 
 
-    this.messagesRef.on('child_added', setMessage);
-    this.messagesRef.on('child_changed', setMessage);
+    firebase.messagesRef.on('child_added', setMessage);
+    firebase.messagesRef.on('child_changed', setMessage);
 }
 
 function loadListMotorbike() {
-    this.messagesRef = this.database.ref('motorbike');
+    firebase.messagesRef =database.ref('motorbike');
 
-    this.messagesRef.off();
+    firebase.messagesRef.off();
 
 
     var setMessage = function (data) {
@@ -81,25 +94,25 @@ function loadListMotorbike() {
     }.bind(this);
 
 
-    this.messagesRef.on('child_added', setMessage);
-    this.messagesRef.on('child_changed', setMessage);
+    firebase.messagesRef.on('child_added', setMessage);
+    firebase.messagesRef.on('child_changed', setMessage);
 }
 
 function loadDataGrabInfo() {
 
-    this.messagesRef = this.database.ref('grabinfo');
+    firebase.messagesRef = database.ref('grabinfo');
 
-    this.messagesRef.off();
+    firebase.messagesRef.off();
     var setMessage = function (data) {
         var val = data.val();
 
-        this.saveDatabaseGrab(data.key, val.customer, val.date, val.motorbike, val.status);
+        saveDatabaseGrab(data.key, val.customer, val.date, val.motorbike, val.status);
 
     }.bind(this);
 
 
-    this.messagesRef.on('child_added', setMessage);
-    this.messagesRef.on('child_changed', setMessage);
+    firebase.messagesRef.on('child_added', setMessage);
+    firebase.messagesRef.on('child_changed', setMessage);
 
 }
 
@@ -133,11 +146,20 @@ function addTable(customer) {
     }
     else {
         //đã được định vị, lấy thông tin grab
+        //debugger
         var currentGrab = getCurrentGrab(customer[0]);
-        if (currentGrab[3]) {//đã có xe
-            var currentMotor = getCurrentMotor(currentGrab[3]);
 
-            $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
+        if (typeof currentGrab === 'undefined') {
+
+            //chưa có gì
+        }
+        else {
+
+
+            if (currentGrab[3]) {//đã có xe
+                var currentMotor = getCurrentMotor(currentGrab[3]);
+
+                $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
                 <td>" + getMMDDYY(currentGrab[2]) + "</td>\
                 <td>" + customer[5] + "</td>\
                 <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
@@ -145,13 +167,13 @@ function addTable(customer) {
                 <td style='color:green'>" + "Đã có xe" + "</td>\
                 <td>" + currentMotor[2] + "</td>\
                 <td>" + currentMotor[1] + "</td>\
-                <td>" + "<a class='btn btn-primary direction' href='javascript:void(0)'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
+                <td>" + "<a class='btn btn-primary direction' href='#'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
                 </tr>");
 
-        }
-        else {//chưa có xe
+            }
+            else {//chưa có xe
 
-            $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
+                $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
                 <td>" + getMMDDYY(currentGrab[2]) + "</td>\
                 <td>" + customer[5] + "</td>\
                 <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
@@ -161,8 +183,9 @@ function addTable(customer) {
             <td>" + "" + "</td>\
             <td>" + "" + "</td>\
                 </tr>");
-        }
+            }
 
+        }
     }
 
 }
@@ -185,7 +208,7 @@ function updateTable(grabinfo) {
                 <td style='color:green'>" + "Đã có xe" + "</td>\
                 <td>" + currentMotor[2] + "</td>\
                 <td>" + currentMotor[1] + "</td>\
-                <td>" + "<a class='btn btn-primary direction' href='javascript:void(0)' data-toggle='modal' data-target='#mymap'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
+                <td>" + "<a class='btn btn-primary direction'   href='#' data-toggle='modal' data-target='#mymap'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
                 </tr>");
 
     }
@@ -204,7 +227,7 @@ function updateTable(grabinfo) {
 
 }
 
-
+//onclick='calculateAndDisplayRoute("+currentMotor[3]+","+customer[5]+")'
 function getCurrentCustomer(key) {
     for (var i = 0; i < listcustomer.length; i++) {
 
@@ -243,19 +266,19 @@ function getMMDDYY(ticks) {
 }
 
 
+//$("tbody").off('click', 'a.direction').on("click", "a.direction", function () {
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay, p1, p2) {
+//    var btn = $(this);         
+                
+//    calculateAndDisplayRoute(btn.data('ad1'), btn.data('ad2'));
 
-    directionsService.route({
-        origin: p1,
-        destination: p2,
-        travelMode: 'DRIVING'
-    }, function (response, status) {
-        if (status === 'OK') {
-            console.log(response);
-            directionsDisplay.setDirections(response);
-        } else {
-            alert('Directions request failed due to ' + status);
-        }
-    });
-}
+//});
+
+
+
+//Array.from(classname).forEach(function(element) {
+//    element.addEventListener('click', test);
+//});
+
+
+//export * from './main.js';
