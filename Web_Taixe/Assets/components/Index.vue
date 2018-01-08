@@ -4,25 +4,7 @@
         <div class="container">
 
 
-            <h1 class="text-center" style="color:forestgreen">CHI TIẾT ĐẶT XE</h1>
-
-            <table id="infograb" border="1" class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Khách hàng</th>
-                        <th>Ngày đặt</th>
-                        <th>Điểm đón</th>
-                        <th>Loại xe</th>
-                        <th>Phone</th>
-                        <th>Trạng thái</th>
-                        <th>Tài xế</th>
-
-                        <th>Biển số</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody  id="detailgrab"></tbody>
-            </table>
+          
 
         </div>
 

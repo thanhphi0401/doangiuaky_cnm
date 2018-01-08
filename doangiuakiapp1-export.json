@@ -1,22 +1,20 @@
 {
 	"grabinfo":{
-		 "0" : {
-		  "customer" : "0",
-		  "motobike" : "0",
-		  "date" : "2017-01-01",
-		  "status" : "1"
-		}
+		 
 	},
   "admins" : {
     "dinhvivien" : {
-      "7TNSsAE9J9ThamZcbZziD2YjdHo1" : "dinhvivien1@gmail.com",
-      "MdGVIMq7wkV5KQtUDCcM97e2d3D2" : "dinhvivien2@gmail.com",
-      "pG0p4QbvHqhSC3BkCqvydcyaeoW2" : "dinhvivien3@gmail.com"
+      "dinhvivien1" : "dinhvivien1@gmail.com",
+      "dinhvivien2" : "dinhvivien2@gmail.com",
+      "dinhvivien3" : "dinhvivien3@gmail.com"
     },
     "tongdaivien" : {
-      "0T197MDnHZbivWx0piupnTJPQGu1" : "tongdaivien3@gmail.com",
-      "2KurSGR0yZYGJYtYvKfAwRv2A8y2" : "tongdaivien2@gmail.com",
-      "dWCARDRlIudaMbOiMR3Wr2jlolm2" : "tongdaivien1@gmail.com"
+      "tongdaivien3" : "tongdaivien3@gmail.com",
+      "tongdaivien2" : "tongdaivien2@gmail.com",
+      "tongdaivien1" : "tongdaivien1@gmail.com"
+    },
+	 "giamsatvien" : {
+      "giamsatvien1" : "giamsatvien1@gmail.com"
     }
   },
   "customer" : {
@@ -48,80 +46,90 @@
     "diachi" : "227 Nguyễn Văn Cừ, Quận 5, Hồ Chí Minh",
     "kinhdo" : "106.68225710000002",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.762887"
+    "status" : "1",
+    "vido" : "10.762887",
+	"email":"taixe1@gmail.com"
   }, {
     "biensoxe" : "51A-342342",
     "chuxe" : "Vũ Đình Thăng",
     "diachi" : "Cầu vượt Nguyễn Tri Phương, Quận 10, Hồ Chí Minh",
     "kinhdo" : "106.67030150000005",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.7557839"
+    "status" : "1",
+    "vido" : "10.7557839",
+	"email":"taixe2@gmail.com"
   }, {
     "biensoxe" : "51A-35446",
     "chuxe" : "Nguyễn Văn Long",
     "diachi" : "Siêu thị Big C Miền Đông, Ho Chi Minh City, Ho Chi Minh, Vietnam",
     "kinhdo" : "106.666069",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.77728"
+    "status" : "1",
+    "vido" : "10.77728",
+	"email":"taixe3@gmail.com" 
   }, {
     "biensoxe" : "51A-242132",
     "chuxe" : "Trần Thị Ngọc Diệu",
     "diachi" : "Bệnh viện 115, Phường 14, Ho Chi Minh, Vietnam",
     "kinhdo" : "106.666069",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.77728"
+    "status" : "1",
+    "vido" : "10.77728",
+	"email":"taixe4@gmail.com" 
   }, {
     "biensoxe" : "51A-869433",
     "chuxe" : "Chu Thị Bê ta",
     "diachi" : "31 Phạm Ngũ Lão, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.69850900000006",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.77035"
+    "status" : "1",
+    "vido" : "10.77035",
+	"email":"taixe5@gmail.com" 
   }, {
     "biensoxe" : "51A-312543",
     "chuxe" : "Hoàng Lão Tà",
     "diachi" : "32 Hồ Văn Tư, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.75563799999998",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.8467241"
+    "status" : "1",
+    "vido" : "10.8467241",
+	"email":"taixe6@gmail.com" 
   }, {
     "biensoxe" : "51A-242123",
     "chuxe" : "Võ Nguyên Đạt",
     "diachi" : "Khu Chế Xuất Linh Trung, Asian Highway 1, Linh Trung, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.76917120000007",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.8683938"
+    "status" : "1",
+    "vido" : "10.8683938",
+	"email":"taixe7@gmail.com" 
   }, {
     "biensoxe" : "51A-865423",
     "chuxe" : "Trương A Quý",
     "diachi" : "Suối Tiên Quốc lộ 1 A, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.80298300000004",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.866767"
+    "status" : "1",
+    "vido" : "10.866767",
+	"email":"taixe8@gmail.com" 
   }, {
     "biensoxe" : "51A-905321",
     "chuxe" : "Trần Văn Phong",
     "diachi" : "Trường đại học Ngân hàng Thành phố Hồ Chí Minh, Cơ sở Hoàng Diệu - Thủ Đức, Hoàng Diệu 2, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.76181169999995",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.8577471"
+    "status" : "1",
+    "vido" : "10.8577471",
+	"email":"taixe9@gmail.com" 
   }, {
     "biensoxe" : "51A-768392",
     "chuxe" : "Đinh Đức Thiệu",
     "diachi" : "Ngân hàng Đông Á, Trường Chinh, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.63315990000001",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.8110766"
+    "status" : "1",
+    "vido" : "10.8110766",
+	"email":"taixe10@gmail.com" 
   }, {
     "biensoxe" : "51A-096593",
     "chuxe" : "Võ Quốc Tuấn ",
@@ -129,7 +137,8 @@
     "kinhdo" : "106.80621040000005",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.8782309"
+    "vido" : "10.8782309",
+	"email":"taixe11@gmail.com" 
   }, {
     "biensoxe" : "51A-563920",
     "chuxe" : "Vũ Quốc Thanh",
@@ -137,15 +146,17 @@
     "kinhdo" : "106.65882450000004",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.8184631"
+    "vido" : "10.8184631",
+	"email":"taixe12@gmail.com" 
   }, {
     "biensoxe" : "51A-125862",
     "chuxe" : "Nguyễn Văn Hoàng Kỳ",
     "diachi" : "FPT Software Hồ Chí Minh, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.79835980000007",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.8509782"
+    "status" : "1",
+    "vido" : "10.8509782",
+	"email":"taixe13@gmail.com" 
   }, {
     "biensoxe" : "51A-459782",
     "chuxe" : "Trương Thị Mẫn ",
@@ -153,7 +164,8 @@
     "kinhdo" : "106.62943489999998",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.8528718"
+    "vido" : "10.8528718",
+	"email":"taixe14@gmail.com" 
   }, {
     "biensoxe" : "51A-456357",
     "chuxe" : "Nguyễn Thị Ngọc Lan",
@@ -161,7 +173,8 @@
     "kinhdo" : "106.62943489999998",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.8528718"
+    "vido" : "10.8528718",
+	"email":"taixe15@gmail.com" 
   }, {
     "biensoxe" : "51A-997775",
     "chuxe" : "Bùi Phú Hà",
@@ -169,7 +182,8 @@
     "kinhdo" : "106.67834040000002",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.7955209"
+    "vido" : "10.7955209",
+	"email":"taixe16@gmail.com" 
   }, {
     "biensoxe" : "51A-123963",
     "chuxe" : "Trần Phương Nam",
@@ -177,7 +191,8 @@
     "kinhdo" : "106.62613680000004",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.8543933"
+    "vido" : "10.8543933",
+	"email":"taixe17@gmail.com" 
   }, {
     "biensoxe" : "51A-556789",
     "chuxe" : "Tiêu Thanh Hướng",
@@ -185,7 +200,8 @@
     "kinhdo" : "106.72292360000006",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.7991927"
+    "vido" : "10.7991927",
+	"email":"taixe18@gmail.com" 
   }, {
     "biensoxe" : "51A-330548",
     "chuxe" : "Trần Nguyễn Ngọc Hà",
@@ -193,7 +209,8 @@
     "kinhdo" : "106.70556450000004",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.7676072"
+    "vido" : "10.7676072",
+	"email":"taixe19@gmail.com" 
   }, {
     "biensoxe" : "51A-336958",
     "chuxe" : "Nguyễn Minh Toàn",
@@ -201,63 +218,63 @@
     "kinhdo" : "106.6598146",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.7734543"
+    "vido" : "10.7734543",
+	"email":"taixe20@gmail.com" 
   }, {
     "biensoxe" : "51A-102586",
     "chuxe" : "Đinh Lê Trà My",
     "diachi" : "Bảo tàng chứng tích chiến tranh, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.69214740000007",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.779394"
-  }, {
-    "biensoxe" : "51A-036598",
-    "chuxe" : "Thái Thanh Phong",
-    "diachi" : "Studio 60, Đường Nguyễn Văn Thủ, Đa Kao, Hồ Chí Minh, Việt Nam",
-    "kinhdo" : "106.69933830000002",
-    "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.7905188"
-  }, {
+    "status" : "1",
+    "vido" : "10.779394",
+	"email":"taixe21@gmail.com" 
+  }, 
+  {
     "biensoxe" : "51A-456987",
     "chuxe" : "Phùng Thị Thúy Vân",
     "diachi" : "Đại học Y Dược, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.66297269999995",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.7552278"
+    "status" : "1",
+    "vido" : "10.7552278",
+	"email":"taixe22@gmail.com" 
   }, {
     "biensoxe" : "51A-225566",
     "chuxe" : "Nguyễn Thị Kiều Vy",
     "diachi" : "Đại học Tôn Đức Thắng, Nguyễn Hữu Thọ, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.69990200000007",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.73268"
+    "status" : "1",
+    "vido" : "10.73268",
+	"email":"taixe23@gmail.com" 
   }, {
     "biensoxe" : "51A-301968",
     "chuxe" : "Nguyễn Ngọc Lan Vi",
     "diachi" : "Đầm Sen, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.64082439999993",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.7677548"
+    "status" : "1",
+    "vido" : "10.7677548",
+	"email":"taixe24@gmail.com" 
   }, {
     "biensoxe" : "51A-725691",
     "chuxe" : "Trịnh Võ Hoàng",
     "diachi" : "Dinh Độc Lập, Nam Kỳ Khởi Nghĩa, Bến Thành, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.69598580000002",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.77765"
+    "status" : "1",
+    "vido" : "10.77765",
+	"email":"taixe25@gmail.com" 
   }, {
     "biensoxe" : "51A-169532",
     "chuxe" : "Chu Văn Hiếu",
     "diachi" : "VNG Corporation, Lê Đại Hành, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.65626480000003",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.7639382"
+    "status" : "1",
+    "vido" : "10.7639382",
+	"email":"taixe26@gmail.com" 
   }, {
     "biensoxe" : "51A-306512",
     "chuxe" : "Trương Tấn Sang",
@@ -265,23 +282,26 @@
     "kinhdo" : "106.66645599999993",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.805136"
+    "vido" : "10.805136",
+	"email":"taixe27@gmail.com" 
   }, {
     "biensoxe" : "51A-754613",
     "chuxe" : "Khương Thị Dung",
     "diachi" : "Công viên Lê Thị Riêng, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.66561200000001",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.7843208"
+    "status" : "1",
+    "vido" : "10.7843208",
+	"email":"taixe28@gmail.com" 
   }, {
     "biensoxe" : "51A-003698",
     "chuxe" : "Khương Đình Thành",
     "diachi" : "Hồ bơi Văn Thánh, Phường 22, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.71492599999999",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.797972"
+    "status" : "1",
+    "vido" : "10.797972",
+	"email":"taixe29@gmail.com" 
   }, {
     "biensoxe" : "51A-083872",
     "chuxe" : "Nguyễn Tấn Triều",
@@ -289,7 +309,8 @@
     "kinhdo" : "106.70126359999995",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.7676156"
+    "vido" : "10.7676156",
+	"email":"taixe30@gmail.com" 
   }, {
     "biensoxe" : "51A-469512",
     "chuxe" : "Đỗ Ngọc Trang Nhung",
@@ -297,55 +318,62 @@
     "kinhdo" : "106.71484580000003",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.8018391"
+    "vido" : "10.8018391",
+	"email":"taixe31@gmail.com" 
   }, {
     "biensoxe" : "51A-378923",
     "chuxe" : "Nguyễn Thị Mỹ Liễu",
     "diachi" : "IUH, Nguyễn Văn Bảo, phường 4, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.6875162",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.8221246"
+    "status" : "1",
+    "vido" : "10.8221246",
+	"email":"taixe32@gmail.com" 
   }, {
     "biensoxe" : "51A-031325",
     "chuxe" : "Bùi Viết Dũng",
     "diachi" : "Hoàng Diệu 2, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.76452599999993",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.856284"
+    "status" : "1",
+    "vido" : "10.856284",
+	"email":"taixe33@gmail.com" 
   }, {
     "biensoxe" : "51A-891456",
     "chuxe" : "Chương A Thành Đạt",
     "diachi" : "Trường Trung cấp Ánh Sáng (Cơ Sở 2), Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.61186769999995",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.831629"
+    "status" : "1",
+    "vido" : "10.831629",
+	"email":"taixe34@gmail.com" 
   }, {
     "biensoxe" : "51A-886352",
     "chuxe" : "Nguyễn Văn Thành",
     "diachi" : "Rin Rin Park Công Viên Nhật Bản, ấp Xuân Thới Đông 1, Xuân Thới Đông, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.58471899999995",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.8593496"
+    "status" : "1",
+    "vido" : "10.8593496",
+	"email":"taixe35@gmail.com" 
   }, {
     "biensoxe" : "51A-146235",
     "chuxe" : "Trần Văn Công Lý",
     "diachi" : "Phan Huy Ích, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.63486499999999",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.8343387"
+    "status" : "1",
+    "vido" : "10.8343387",
+	"email":"taixe36@gmail.com" 
   }, {
     "biensoxe" : "51A-963302",
     "chuxe" : "Nguyễn Viết Đông",
     "diachi" : "Chợ Thủ Đức, Hồ Chí Minh, Việt Nam",
     "kinhdo" : "106.76794619999998",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.8735594"
+    "status" : "1",
+    "vido" : "10.8735594",
+	"email":"taixe37@gmail.com" 
   }, {
     "biensoxe" : "51A-603215",
     "chuxe" : "Lương Vĩnh Khang",
@@ -353,7 +381,8 @@
     "kinhdo" : "106.77298999999994",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.84828"
+    "vido" : "10.84828",
+	"email":"taixe38@gmail.com" 
   }, {
     "biensoxe" : "51A-786659",
     "chuxe" : "Trần Lâm Khang",
@@ -361,7 +390,8 @@
     "kinhdo" : "106.77545650000002",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.8303076"
+    "vido" : "10.8303076",
+	"email":"taixe39@gmail.com" 
   }, {
     "biensoxe" : "51A-249290",
     "chuxe" : "Trần Ly Ly",
@@ -369,39 +399,44 @@
     "kinhdo" : "106.67376749999994",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.7628213"
+    "vido" : "10.7628213",
+	"email":"taixe40@gmail.com" 
   }, {
     "biensoxe" : "51A-10911",
     "chuxe" : "Lê Trần Anh",
     "diachi" : "1000 Phạm Thế Hiển, Ho Chi Minh City, Ho Chi Minh, Vietnam ",
     "kinhdo" : "106.66127289999997",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.7418731"
+    "status" : "1",
+    "vido" : "10.7418731",
+	"email":"taixe41@gmail.com" 
   }, {
     "biensoxe" : "59A-09411",
     "chuxe" : "Nguyễn Đăng Phương",
     "diachi" : "Cầu Ánh Sao, Ho Chi Minh City, Ho Chi Minh, Vietnam",
     "kinhdo" : "106.71851779999997",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.7247197"
+    "status" : "1",
+    "vido" : "10.7247197",
+	"email":"taixe42@gmail.com" 
   }, {
     "biensoxe" : "59A-24811",
     "chuxe" : "Nguyễn Hoàng Thùy Dung",
     "diachi" : "Địa Đạo Củ Chi, Phú Mỹ Hưng, Ho Chi Minh, Vietnam",
     "kinhdo" : "106.46427560000006",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "11.1442864"
+    "status" : "1",
+    "vido" : "11.1442864",
+	"email":"taixe43@gmail.com" 
   }, {
     "biensoxe" : "59A-10111",
     "chuxe" : "Lê Hoàng Thùy Dung",
     "diachi" : "Công viên Hoàng Văn Thụ, Ho Chi Minh City, Ho Chi Minh, Vietnam",
     "kinhdo" : "106.66475820000005",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.8012337"
+    "status" : "1",
+    "vido" : "10.8012337",
+	"email":"taixe44@gmail.com" 
   }, {
     "biensoxe" : "59A-09141",
     "chuxe" : "Hoàng Anh Tú",
@@ -409,7 +444,8 @@
     "kinhdo" : "106.63972239999998",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.8019257"
+    "vido" : "10.8019257",
+	"email":"taixe45@gmail.com" 
   }, {
     "biensoxe" : "59A-02911",
     "chuxe" : "Lê Khiêm",
@@ -417,7 +453,8 @@
     "kinhdo" : "106.65441899999996",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.792531"
+    "vido" : "10.792531",
+	"email":"taixe46@gmail.com" 
   }, {
     "biensoxe" : "59A-84222",
     "chuxe" : "Lê Hoàng Anh",
@@ -425,23 +462,26 @@
     "kinhdo" : "106.68164469999999",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.7781382"
+    "vido" : "10.7781382",
+	"email":"taixe47@gmail.com" 
   }, {
     "biensoxe" : "59A-22222",
     "chuxe" : "Lê Thị Anh",
     "diachi" : "Bệnh viện Chợ Rẫy, Ho Chi Minh City, Ho Chi Minh, Vietnam",
     "kinhdo" : "106.65973050000002",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.7570385"
+    "status" : "1",
+    "vido" : "10.7570385",
+	"email":"taixe48@gmail.com" 
   }, {
     "biensoxe" : "78F1-80109",
     "chuxe" : "Nguyễn Đông Dương",
     "diachi" : "Cư Xá Đồng Tiến, Ho Chi Minh City, Ho Chi Minh, Vietnam",
     "kinhdo" : "106.66441099999997",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.7695301"
+    "status" : "1",
+    "vido" : "10.7695301",
+	"email":"taixe49@gmail.com" 
   }, {
     "biensoxe" : "78F1-08342",
     "chuxe" : "Nguyễn Đông Thanh Phong",
@@ -449,7 +489,8 @@
     "kinhdo" : "106.69266579999999",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.7764498"
+    "vido" : "10.7764498",
+	"email":"taixe50@gmail.com" 
   }, {
     "biensoxe" : "78F1-19811",
     "chuxe" : "Nguyễn Thành Nam",
@@ -457,7 +498,8 @@
     "kinhdo" : "106.7113028",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.8148129"
+    "vido" : "10.8148129",
+	"email":"taixe51@gmail.com" 
   }, {
     "biensoxe" : "81F1-884141",
     "chuxe" : "Lê Nguyên Đức",
@@ -465,23 +507,26 @@
     "kinhdo" : "106.7113028",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.8148129"
+    "vido" : "10.8148129",
+	"email":"taixe52@gmail.com" 
   }, {
     "biensoxe" : "78F1-09411",
     "chuxe" : "Nguyễn Hoàng Tôn",
     "diachi" : "Bến xe Miền Đông, Đinh Bộ Lĩnh, phường 26, Vietnam",
     "kinhdo" : "106.7113028",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.8148129"
+    "status" : "1",
+    "vido" : "10.8148129",
+	"email":"taixe53@gmail.com" 
   }, {
     "biensoxe" : "78F1-65875",
     "chuxe" : "Nguyễn Hoàng Thịnh",
     "diachi" : "Cầu Bình Triệu, Ho Chi Minh City, Ho Chi Minh, Vietnam",
     "kinhdo" : "106.71353969999996",
     "loaixe" : "1",
-    "status" : "2",
-    "vido" : "10.820596"
+    "status" : "1",
+    "vido" : "10.820596",
+	"email":"taixe54@gmail.com" 
   }, {
     "biensoxe" : "49A1-74142",
     "chuxe" : "Nguyễn Thanh Nhàn",
@@ -489,7 +534,8 @@
     "kinhdo" : "106.67471590000002",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.767537"
+    "vido" : "10.767537",
+	"email":"taixe55@gmail.com" 
   }, {
     "biensoxe" : "49A1-27432",
     "chuxe" : "Nguyễn Thanh Nhân",
@@ -497,15 +543,17 @@
     "kinhdo" : "106.68860410000002",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.7863775"
+    "vido" : "10.7863775",
+	"email":"taixe56@gmail.com" 
   }, {
     "biensoxe" : "49A1-65462",
     "chuxe" : "Nguyễn Hồng Đào",
     "diachi" : "20 Hoàng Sa, Ho Chi Minh City, Ho Chi Minh, Vietnam",
     "kinhdo" : "106.70473990000005",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.7919591"
+    "status" : "1",
+    "vido" : "10.7919591",
+	"email":"taixe57@gmail.com" 
   }, {
     "biensoxe" : "49A1-62422",
     "chuxe" : "Lê Văn Đào",
@@ -513,15 +561,17 @@
     "kinhdo" : "106.70048889999998",
     "loaixe" : "1",
     "status" : "1",
-    "vido" : "10.7938802"
+    "vido" : "10.7938802",
+	"email":"taixe58@gmail.com" 
   }, {
     "biensoxe" : "49A1-75792",
     "chuxe" : "Nguyễn Đồng Tiến",
     "diachi" : "Parkson Hung Vuong Plaza, Đường Hùng Vương, phường 4, Ho Chi Minh, Vietnam",
     "kinhdo" : "106.66306259999999",
     "loaixe" : "2",
-    "status" : "2",
-    "vido" : "10.7560552"
+    "status" : "1",
+    "vido" : "10.7560552",
+	"email":"taixe59@gmail.com" 
   }, {
     "biensoxe" : "49A1-32521",
     "chuxe" : "Nguyễn Anh Giang",
@@ -529,6 +579,17 @@
     "kinhdo" : "106.7109898",
     "loaixe" : "2",
     "status" : "1",
-    "vido" : "10.7937176"
-  } ]
+    "vido" : "10.7937176",
+	"email":"taixe60@gmail.com" 
+  },
+{
+    "biensoxe" : "51A-036598",
+    "chuxe" : "Thái Thanh Phong",
+    "diachi" : "Studio 60, Đường Nguyễn Văn Thủ, Đa Kao, Hồ Chí Minh, Việt Nam",
+    "kinhdo" : "106.69933830000002",
+    "loaixe" : "1",
+    "status" : "1",
+    "vido" : "10.7905188",
+	"email":"taixe61@gmail.com" 
+  }  ]
 }

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <title>Ứng dụng cho tài xế</title>
+    <link href="/Assets/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/Site.css" rel="stylesheet" />
+
+    <link href="~/Assets/Login.css" rel="stylesheet" />
+    <style>
+        #map {
+            height: 100%;
+        }
+
+        .modal-dialog {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        .modal-content {
+            height: 100%;
+            border-radius: 0;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+
+
+   
+    <div id="app"></div>
+
+
+    <script src="/Assets/jquery-3.1.1.min.js"></script>
+    <script src="/Assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+    <script src="/Assets/bootbox.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBPRUwT-TI81VkXmC_MReaj8msT-8NTxEY",
+            authDomain: "doangiuakiapp1.firebaseapp.com",
+            databaseURL: "https://doangiuakiapp1.firebaseio.com",
+            projectId: "doangiuakiapp1",
+            storageBucket: "doangiuakiapp1.appspot.com",
+            messagingSenderId: "208748898412"
+        };
+        firebase.initializeApp(config);
+
+
+
+    </script>
+
+
+
+
+    @*<script src="~/Assets/scripts/main.js"></script>*@
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkXZtUT0xV5xWjf39lS1de3qFybmlyRzA&callback=initMap">
+
+    </script>
+    <script src="/dist/build.js"></script>
+
+
+    @*<script>
+        $(document).ready(function () {
+            $("tbody").off('click', 'a.direction').on("click", "a.direction", function () {
+
+                var btn = $(this);
+
+                calculateAndDisplayRoute(btn.data('ad1'), btn.data('ad2'));
+
+            });
+
+        });
+
+
+    </script>*@
+    @*<script src="~/Assets/scripts/showdirection.js"></script>*@
+</body>
+
+</html>

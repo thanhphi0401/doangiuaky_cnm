@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_DinhVi", "Web_DinhVi\We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_TheoDoi", "Web_TheoDoi\Web_TheoDoi.csproj", "{DA1285A2-D98F-41F2-BCC9-2694301C86D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_Taixe", "Web_Taixe\Web_Taixe.csproj", "{DCDB08E6-93DD-4C47-A877-B6929BAACAA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DA1285A2-D98F-41F2-BCC9-2694301C86D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA1285A2-D98F-41F2-BCC9-2694301C86D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA1285A2-D98F-41F2-BCC9-2694301C86D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCDB08E6-93DD-4C47-A877-B6929BAACAA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCDB08E6-93DD-4C47-A877-B6929BAACAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCDB08E6-93DD-4C47-A877-B6929BAACAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCDB08E6-93DD-4C47-A877-B6929BAACAA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
