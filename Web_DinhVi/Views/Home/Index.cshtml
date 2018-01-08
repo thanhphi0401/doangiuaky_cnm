@@ -1,30 +1,111 @@
-﻿
-@{
-    ViewBag.Title = "Định Vị Xe - Trang Chủ";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Định vị khách hàng</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href="~/Assets/Login.css" rel="stylesheet" />
+    <link href="/Assets/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        #map {
+            height: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #floating-panel {
+            position: absolute;
+            top: 10px;
+            left: 20%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+            width: 20%;
+        }
 
-@model Web_DinhVi.Models.UserLogin
+        #areauser {
+            position: absolute;
+            top: 500px;
+            left: 77%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+            width: 16%;
+        }
 
-<div id="floating-panel">
-    @*<input id="address" type="text" value="512 cách mạng tháng 8">
-        <input type="button" value="Encode" onclick="codeAddress($('#address').val())">
-        <br>*@
+        #selection {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
 
-    <select onchange="codeAddress($('#selection option:selected').text())" class="form-control" id="selection">
-        <option value="0" selected>=====Danh sách cần định vị=====</option>
+</head>
+<body>
+    <div id="map">   
+        <div id="app"></div>
+    </div>
+      
+  
 
-    </select>
-    <input type="button" class="btn btn-danger" value="ĐỊNH VỊ" onclick="locatesleep($('#selection').val())">
+    <script src="/Assets/jquery-3.1.1.min.js"></script>
+    <script src="/Assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/Assets/bootbox.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBPRUwT-TI81VkXmC_MReaj8msT-8NTxEY",
+            authDomain: "doangiuakiapp1.firebaseapp.com",
+            databaseURL: "https://doangiuakiapp1.firebaseio.com",
+            projectId: "doangiuakiapp1",
+            storageBucket: "doangiuakiapp1.appspot.com",
+            messagingSenderId: "208748898412"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkXZtUT0xV5xWjf39lS1de3qFybmlyRzA&callback=initMap"></script>
 
 
-</div>
+    <!--<script src="~/Assets/scripts/map.js"></script>-->
 
-<div class="container" id="areauser">
+    <script>
+        
+        var geocoder;
+        var map;
+        var markers = [];
+        var motorbikes = [];
+        var listfreemotorbikes = [];
+        var nearestmotorbikes = [];
+        var customers = [];
+        var serviceDistance;
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(10.8230989, 106.6296638);
+        var mapOptions = {
+            zoom: 9,
+            center: latlng,
+            zoomControl: true,
+            mapTypeControl: true,
+            scaleControl: true,
+            streetViewControl: true,
+            rotateControl: true,
+            fullscreenControl: true
+        }
 
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    </script>
+    <script src="~/dist/build.js"></script>
 
-    <p>Welcome, @Model.Email</p>
-
-    <a href="/login/logout" class="btn btn-primary">Logout</a>
-</div>
-
+</body>
+</html>

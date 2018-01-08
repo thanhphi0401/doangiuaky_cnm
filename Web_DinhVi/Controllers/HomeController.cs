@@ -7,17 +7,13 @@ using Web_DinhVi.Models;
 
 namespace Web_DinhVi.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController :Controller
     {
         public ActionResult Index()
         {
 
-            var session = Session["USER_SESSION"];
-
-
-            return View(session);
+            return View();
         }
-
 
     }
 }

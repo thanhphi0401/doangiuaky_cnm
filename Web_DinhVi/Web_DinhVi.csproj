@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -141,9 +142,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -152,7 +151,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\App.vue" />
+    <None Include="Assets\components\Index.vue" />
+    <None Include="Assets\components\Login.vue" />
     <Content Include="Assets\Login.css" />
+    <Content Include="Assets\main.js" />
     <Content Include="Assets\moto.png" />
     <Content Include="Assets\bootbox.min.js" />
     <Content Include="Assets\bootstrap-3.3.7\css\bootstrap-theme.css" />
@@ -2861,12 +2864,15 @@
     <Content Include="Assets\fuctions\node_modules\xtend\mutable.js" />
     <Content Include="Assets\fuctions\node_modules\xtend\test.js" />
     <Content Include="Assets\jquery-3.1.1.min.js" />
+    <Content Include="Assets\scripts\googlemap.js" />
     <Content Include="Assets\scripts\loginajax.js" />
     <Content Include="Assets\scripts\main.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\scripts\map.js" />
     <Content Include="Assets\Site.css" />
     <Content Include="Assets\vue-2.5.3.js" />
+    <Content Include="dist\build.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -3356,6 +3362,8 @@
     <Content Include="Assets\fuctions\node_modules\xtend\package.json" />
     <Content Include="Assets\fuctions\node_modules\xtend\README.md" />
     <Content Include="Assets\fuctions\package.json" />
+    <Content Include="package.json" />
+    <Content Include="webpack.config.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -3377,11 +3385,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
