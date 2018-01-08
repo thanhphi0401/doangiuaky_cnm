@@ -3,7 +3,13 @@
 
         <div class="container">
 
+            <div class="profile">
 
+            </div>
+
+            <div class="infograb">
+
+            </div>
           
 
         </div>

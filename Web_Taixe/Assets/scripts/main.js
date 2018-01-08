@@ -14,13 +14,11 @@ var directionsDisplay;
 
 
 var grabinfo = [];
-var motorbikegrab = [];
-var customergrab = [];
+var currentMoto;
+var currentDriverEmail;
 
 var listcustomer = [];
-var listmotorbike = [];
 
-var serviceDistance;
 
 // thiết lập xác thực firebase with google
 let  database = firebase.database();
@@ -49,7 +47,24 @@ export function initialize() {
 
 
     loadListCustomer();
-    loadListMotorbike();
+
+    //get current email driver
+    $.ajax({
+        url: '/Home/login',
+        type: "GET",
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            currentDriverEmail=response.Email;
+            console.log(response.Email);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+
+    //
+    loadCurrentMotobike();
 
     loadDataGrabInfo();
 
@@ -70,8 +85,7 @@ function loadListCustomer() {
 
         var customer = [data.key, val.customerName, val.telephone, val.status, val.type, val.address];
         listcustomer.push(customer);
-        //add vô table luôn
-        addTable(customer);
+        
 
     }.bind(this);
 
@@ -80,7 +94,7 @@ function loadListCustomer() {
     firebase.messagesRef.on('child_changed', setMessage);
 }
 
-function loadListMotorbike() {
+function loadCurrentMotobike() {
     firebase.messagesRef =database.ref('motorbike');
 
     firebase.messagesRef.off();
@@ -88,9 +102,12 @@ function loadListMotorbike() {
 
     var setMessage = function (data) {
         var val = data.val();
-
-        var data = [data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido];
-        listmotorbike.push(data);
+        if(data.key==currentDriverEmail)
+        {
+            currentMoto = [data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido];
+            return;
+        }
+        
     }.bind(this);
 
 
@@ -121,111 +138,10 @@ function saveDatabaseGrab(key, customer, date, motorbike, status) {
     var data = [key, customer, date, motorbike, status];
     grabinfo.push(data);
 
-    //update trạng thái table
-    updateTable(data);
+
 
 }
 
-
-
-function addTable(customer) {
-    //tính cả trường hợp gọi lại
-
-    if (customer[3] == "0")//chưa đc định vị
-    {
-        $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
-            <td>" + "" + "</td>\
-            <td>" + customer[5] + "</td>\
-            <td>" + (customer[2] == "1" ? "Thường" : "Premium") + "</td>\
-            <td>" + customer[2] + "</td>\
-            <td style='color:red'>" + "Chưa định vị" + "</td>\
-            <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-            </tr>");
-    }
-    else {
-        //đã được định vị, lấy thông tin grab
-        //debugger
-        var currentGrab = getCurrentGrab(customer[0]);
-
-        if (typeof currentGrab === 'undefined') {
-
-            //chưa có gì
-        }
-        else {
-
-
-            if (currentGrab[3]) {//đã có xe
-                var currentMotor = getCurrentMotor(currentGrab[3]);
-
-                $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
-                <td>" + getMMDDYY(currentGrab[2]) + "</td>\
-                <td>" + customer[5] + "</td>\
-                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
-                <td>" + customer[2] + "</td>\
-                <td style='color:green'>" + "Đã có xe" + "</td>\
-                <td>" + currentMotor[2] + "</td>\
-                <td>" + currentMotor[1] + "</td>\
-                <td>" + "<a class='btn btn-primary direction' href='#'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
-                </tr>");
-
-            }
-            else {//chưa có xe
-
-                $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
-                <td>" + getMMDDYY(currentGrab[2]) + "</td>\
-                <td>" + customer[5] + "</td>\
-                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
-                <td>" + customer[2] + "</td>\
-                <td style='color:blue'>" + "Đã định vị" + "</td>\
-  <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-                </tr>");
-            }
-
-        }
-    }
-
-}
-
-function updateTable(grabinfo) {
-    //get row
-    //get customer info
-    var customer = getCurrentCustomer(grabinfo[1]);
-    var row = "#" + grabinfo[1];
-    $(row).remove();
-
-
-    if (grabinfo[3]) {//đã có xe
-        var currentMotor = getCurrentMotor(grabinfo[3]);
-        $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
-                <td>" + getMMDDYY(grabinfo[2]) + "</td>\
-                <td>" + customer[5] + "</td>\
-                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
-                <td>" + customer[2] + "</td>\
-                <td style='color:green'>" + "Đã có xe" + "</td>\
-                <td>" + currentMotor[2] + "</td>\
-                <td>" + currentMotor[1] + "</td>\
-                <td>" + "<a class='btn btn-primary direction'   href='#' data-toggle='modal' data-target='#mymap'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
-                </tr>");
-
-    }
-    else {
-        $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
-                <td>" + getMMDDYY(grabinfo[2]) + "</td>\
-                <td>" + customer[5] + "</td>\
-                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
-                <td>" + customer[2] + "</td>\
-                <td style='color:blue'>" + "Đã định vị" + "</td>\
-  <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-                </tr>");
-    }
-
-}
 
 //onclick='calculateAndDisplayRoute("+currentMotor[3]+","+customer[5]+")'
 function getCurrentCustomer(key) {
