@@ -1,7 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿
 var directionsService;
 var directionsDisplay;
+=======
+﻿var geocoder;
+var map;
+>>>>>>> parent of d4e2111... complete app3
 =======
 ﻿var geocoder;
 var map;
@@ -29,6 +34,7 @@ function checkSetup() {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export function initialize() {
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer;
@@ -42,6 +48,9 @@ export function initialize() {
         google.maps.event.trigger(map, "resize");
     });
 
+=======
+function initialize() {
+>>>>>>> parent of d4e2111... complete app3
 =======
 function initialize() {
 >>>>>>> parent of d4e2111... complete app3
@@ -63,6 +72,7 @@ function loadListCustomer() {
     var setMessage = function (data) {
         var val = data.val();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         var customer = [data.key, val.customerName, val.telephone, val.status, val.type, val.address];
         listcustomer.push(customer);
@@ -87,6 +97,10 @@ function loadListMotorbike() {
 
         var data = [data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido];
         listmotorbike.push(data);
+=======
+        var data = [data.key, val.customerName, val.telephone, val.status, val.type, val.address];
+        listcustomer.push(data);
+>>>>>>> parent of d4e2111... complete app3
 =======
         var data = [data.key, val.customerName, val.telephone, val.status, val.type, val.address];
         listcustomer.push(data);
@@ -117,6 +131,9 @@ function loadDataGrabInfo() {
         var val = data.val();
 
         this.saveDatabaseGrab(data.key, val.customer, val.date, val.motorbike, val.status);
+<<<<<<< HEAD
+>>>>>>> parent of d4e2111... complete app3
+=======
 >>>>>>> parent of d4e2111... complete app3
     }.bind(this);
 
@@ -143,6 +160,7 @@ function saveDatabaseGrab(key, customer, date, motorbike, status) {
 
 var loadCustomerInfo = function (customer) {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (customer[3] == "0")//chưa đc định vị
     {
@@ -216,10 +234,27 @@ var loadCustomerInfo = function (customer) {
     });
 
 >>>>>>> parent of d4e2111... complete app3
+=======
+    var customerRef = this.database.ref('customer');
+
+    this.messagesRef.off();
+    var data;
+    customerRef.on("child_added", retVal => {
+        var childKey = retVal.key;
+        if (childKey == customer) {
+
+            data = [retVal.val().customerName, retVal.val().address, retVal.val().type, retVal.val().telephone];
+            customergrab.push(data);
+        }
+
+    });
+
+>>>>>>> parent of d4e2111... complete app3
 
 }
 var loadmotorbikeInfo = function (motorbike) {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 function updateTable(grabinfo) {
     //get row
@@ -244,6 +279,9 @@ function updateTable(grabinfo) {
 =======
     var motorbikeRef = this.database.ref('motorbike');
 >>>>>>> parent of d4e2111... complete app3
+=======
+    var motorbikeRef = this.database.ref('motorbike');
+>>>>>>> parent of d4e2111... complete app3
 
     this.messagesRef.off();
     var data;
@@ -255,15 +293,23 @@ function updateTable(grabinfo) {
                  retVal.val().vido, retVal.val().loaixe];
             motorbikegrab.push(data);
         }
+<<<<<<< HEAD
+=======
+
+    });
+>>>>>>> parent of d4e2111... complete app3
 
     });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 //onclick='calculateAndDisplayRoute("+currentMotor[3]+","+customer[5]+")'
 function getCurrentCustomer(key) {
     for (var i = 0; i < listcustomer.length; i++) {
 =======
 
+>>>>>>> parent of d4e2111... complete app3
+=======
 >>>>>>> parent of d4e2111... complete app3
 
 }
@@ -293,6 +339,7 @@ function loadTable() {
 <td>" + motorbike[0] + "</td>\
 <td>" + "<a class='btn btn-primary' data-id=" + grab[0] + ">View Map</a>" + "</td>\
 </tr>");
+<<<<<<< HEAD
         }
         else { //chua có xe
             $("#detailgrab").append("<tr><td>" + customer[0] + "</td>\
@@ -303,6 +350,18 @@ function loadTable() {
 <td>" + "Đã định vị" + "</td>\
 </tr>");
         }
+=======
+        }
+        else { //chua có xe
+            $("#detailgrab").append("<tr><td>" + customer[0] + "</td>\
+<td>" + getMMDDYY(grab[2]) + "</td>\
+<td>" + customer[1] + "</td>\
+<td>" + (customer[2] == "1" ? "Thường" : "Premium") + "</td>\
+<td>" + customer[3] + "</td>\
+<td>" + "Đã định vị" + "</td>\
+</tr>");
+        }
+>>>>>>> parent of d4e2111... complete app3
 
     }
 
@@ -344,6 +403,7 @@ function getMMDDYY(ticks) {
     return "" + mm + "/" + dd + "/" + +yy;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 //$("tbody").off('click', 'a.direction').on("click", "a.direction", function () {
@@ -362,5 +422,7 @@ function getMMDDYY(ticks) {
 
 
 //export * from './main.js';
+=======
+>>>>>>> parent of d4e2111... complete app3
 =======
 >>>>>>> parent of d4e2111... complete app3
