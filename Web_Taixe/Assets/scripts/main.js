@@ -12,6 +12,14 @@
 var directionsService;
 var directionsDisplay;
 
+import Notify from './Notify.vue';
+
+components: {
+    Notify
+}
+
+Vue.use(Notify)
+
 
 var grabinfo = [];
 var currentMoto;
@@ -147,18 +155,39 @@ function saveDatabaseGrab(key, customer, date, motorbike, status) {
         //setTimeout(function(){ alert("Hello"); }, 3000);
         //lấy thông tin khách hàng
 
-        $("#notify").append(" <div class=\"w3-cell\" style=\"width:30%\">\
+        //debugger
+        var html="<div><div class=\"w3-cell\" style=\"width:30%\">\
                     <img class=\"w3-circle img-responsive\" src=\"/Assets/Image/giphy.gif\" style=\"width:100%\">\
                 </div>\
 <div class=\"w3-cell w3-container\">\
 <h2>Khách hàng:"+currentcustomer[1]+"</h2>\
 <p>Địa chỉ:"+currentcustomer[5]+"</p>\
 <div id=\"approvearea\">\
-<a href=\"#\" class=\"btn btn-success approve\">Đồng ý</a>\
-<a href=\"#\" class=\"btn btn-danger deny\">Từ chối</a>\
+<Notify />\
+<a href=\"#\" class=\"btn btn-danger deny\">Từ chối đi</a>\
 </div><br/><br/></div> <audio autoplay loop controls=\"controls\" hidden>\
                 <source src=\"/Assets/Image/messenger.mp3\"   type=\"audio/mpeg\"/>\
-                </audio>");
+                </audio></div>";
+
+        var res = Vue.compile(html)
+        new Vue({
+            render: res.render,
+            staticRenderFns: res.staticRenderFns
+        }).$mount('#notify')
+
+
+//        $("#notify").append("<div class=\"w3-cell\" style=\"width:30%\">\
+//                    <img class=\"w3-circle img-responsive\" src=\"/Assets/Image/giphy.gif\" style=\"width:100%\">\
+//                </div>\
+//<div class=\"w3-cell w3-container\">\
+//<h2>Khách hàng:"+currentcustomer[1]+"</h2>\
+//<p>Địa chỉ:"+currentcustomer[5]+"</p>\
+//<div id=\"approvearea\">\
+//<a href=\"#\" id=\"approve\" class=\"btn btn-success approve\">Đồng ý</a>\
+//<a href=\"#\" class=\"btn btn-danger deny\">Từ chối</a>\
+//</div><br/><br/></div> <audio autoplay loop controls=\"controls\" hidden>\
+//                <source src=\"/Assets/Image/messenger.mp3\"   type=\"audio/mpeg\"/>\
+//                </audio>");
 
     }
    

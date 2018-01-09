@@ -1,6 +1,6 @@
 ﻿<template>
     <div>
-        <span href="#" class="button" id="toggle-login">Log in</span>
+        <span href="#" class="button" id="toggle-login">Ứng dụng cho tài xế</span>
 
         <div id="login">
             <div id="triangle"></div>

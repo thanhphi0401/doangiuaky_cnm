@@ -1,4 +1,4 @@
-import Vue from 'vue';
+﻿import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
 
@@ -27,6 +27,8 @@ var router = new VueRouter({
     routes
 });
 
+
+//http://localhost:51074/Home/Index?#/
 new Vue({
     el: '#app',
     router, //router: router,

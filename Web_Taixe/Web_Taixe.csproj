@@ -2864,7 +2864,6 @@
     <Content Include="Assets\Login.css" />
     <Content Include="Assets\main.js" />
     <Content Include="Assets\moto.png" />
-    <Content Include="Assets\scripts\googlemap.js" />
     <Content Include="Assets\scripts\main.js" />
     <Content Include="Assets\scripts\showdirection.js" />
     <Content Include="Assets\Site.css" />
@@ -3365,6 +3364,8 @@
     <Content Include="Assets\fuctions\node_modules\xtend\package.json" />
     <Content Include="Assets\fuctions\node_modules\xtend\README.md" />
     <Content Include="Assets\fuctions\package.json" />
+    <Content Include="Assets\components\Notify.vue" />
+    <Content Include="Assets\scripts\Notify.vue" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

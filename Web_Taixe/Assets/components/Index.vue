@@ -85,14 +85,19 @@
 
     //import * as mainjs from '../scripts/main.js';
 import {initialize} from '../scripts/main.js';
+import * as a from '../scripts/main.js';
+import Notify from './Notify.vue';
 
 export default {
-
+  
     name: 'Index',
     mounted () {
         initialize();
         this.getEmailDriver();
-
+        $('.deny').on('click',function(e)
+        {
+            console.log("ok");
+        });
 
     },
     data () {
@@ -124,7 +129,14 @@ export default {
             var self=this;
             self.$router.push('/login');
             window.localStorage.removeItem("access_token");
+        },
+        approveGrabAndSend()
+        {
+            console.log("pass");
         }
+    },
+    components: {
+       Notify
     }
     }
 </script>
