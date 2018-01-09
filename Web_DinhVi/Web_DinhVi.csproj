@@ -143,10 +143,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -154,8 +154,10 @@
     <Content Include="Assets\App.vue" />
     <None Include="Assets\components\Index.vue" />
     <None Include="Assets\components\Login.vue" />
+    <Content Include="Assets\bg.jpg" />
     <Content Include="Assets\Login.css" />
     <Content Include="Assets\main.js" />
+    <Content Include="Assets\mapcss.css" />
     <Content Include="Assets\moto.png" />
     <Content Include="Assets\bootbox.min.js" />
     <Content Include="Assets\bootstrap-3.3.7\css\bootstrap-theme.css" />
@@ -2864,15 +2866,9 @@
     <Content Include="Assets\fuctions\node_modules\xtend\mutable.js" />
     <Content Include="Assets\fuctions\node_modules\xtend\test.js" />
     <Content Include="Assets\jquery-3.1.1.min.js" />
-    <Content Include="Assets\scripts\googlemap.js" />
     <Content Include="Assets\scripts\loginajax.js" />
-    <Content Include="Assets\scripts\main.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\scripts\map.js" />
-    <Content Include="Assets\Site.css" />
+    <Content Include="Assets\scripts\main.js" />
     <Content Include="Assets\vue-2.5.3.js" />
-    <Content Include="dist\build.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -3391,7 +3387,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

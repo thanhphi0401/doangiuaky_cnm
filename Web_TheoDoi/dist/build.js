@@ -13485,16 +13485,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = initialize;
 
-//// Initialize Firebase
-//var config = {
-//    apiKey: "AIzaSyBPRUwT-TI81VkXmC_MReaj8msT-8NTxEY",
-//    authDomain: "doangiuakiapp1.firebaseapp.com",
-//    databaseURL: "https://doangiuakiapp1.firebaseio.com",
-//    projectId: "doangiuakiapp1",
-//    storageBucket: "doangiuakiapp1.appspot.com",
-//    messagingSenderId: "208748898412"
-//};
-//firebase.initializeApp(config);
 var directionsService;
 var directionsDisplay;
 

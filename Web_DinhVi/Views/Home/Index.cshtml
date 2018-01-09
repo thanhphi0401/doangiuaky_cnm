@@ -4,59 +4,18 @@
     <title>Định vị khách hàng</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
-    <link href="~/Assets/Login.css" rel="stylesheet" />
+
     <link href="/Assets/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        #map {
-            height: 100%;
-        }
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        #floating-panel {
-            position: absolute;
-            top: 10px;
-            left: 20%;
-            z-index: 5;
-            background-color: #fff;
-            padding: 5px;
-            border: 1px solid #999;
-            text-align: center;
-            font-family: 'Roboto','sans-serif';
-            line-height: 30px;
-            padding-left: 10px;
-            width: 20%;
-        }
+    <link href="~/Assets/mapcss.css" rel="stylesheet" />
 
-        #areauser {
-            position: absolute;
-            top: 500px;
-            left: 77%;
-            z-index: 5;
-            background-color: #fff;
-            padding: 5px;
-            border: 1px solid #999;
-            text-align: center;
-            font-family: 'Roboto','sans-serif';
-            line-height: 30px;
-            padding-left: 10px;
-            width: 16%;
-        }
-
-        #selection {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-    </style>
 
 </head>
 <body>
+    <div id="app"></div>
+
+    <div id="map"></div>
     
-        <div id="app"></div>
-  
-  
+   
 
     <script src="/Assets/jquery-3.1.1.min.js"></script>
     <script src="/Assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -79,32 +38,10 @@
 
     <!--<script src="~/Assets/scripts/map.js"></script>-->
 
-    <script>
-        
-        var geocoder;
-        var map;
-        var markers = [];
-        var motorbikes = [];
-        var listfreemotorbikes = [];
-        var nearestmotorbikes = [];
-        var customers = [];
-        var serviceDistance;
-        geocoder = new google.maps.Geocoder();
-        var latlng = new google.maps.LatLng(10.8230989, 106.6296638);
-        var mapOptions = {
-            zoom: 9,
-            center: latlng,
-            zoomControl: true,
-            mapTypeControl: true,
-            scaleControl: true,
-            streetViewControl: true,
-            rotateControl: true,
-            fullscreenControl: true
-        }
 
-        map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    </script>
-    <script src="~/dist/build.js"></script>
+    <script src="/dist/build.js"></script>
+
+
 
 </body>
 </html>

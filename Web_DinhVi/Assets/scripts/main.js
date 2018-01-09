@@ -10,7 +10,7 @@ var customers = [];
 var serviceDistance;
 
 // thiết lập xác thực firebase with google
-let database = firebase.database();
+let  database = firebase.database();
 function checkSetup() {
     if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
         window.alert('You have not configured and imported the Firebase SDK. ' +
@@ -18,6 +18,7 @@ function checkSetup() {
             'sure you are running the codelab using `firebase serve`');
     }
 }
+
 
 export function initialize() {
 
@@ -38,25 +39,30 @@ export function initialize() {
 
     loadUnlocatedCustomer();
     loadDataMotorbike();
+
+    //setTimeout(function () {
+    //    loadListDinhVi();
+    //}, 1000);
+
 }
 
 
 function loadDataMotorbike() {
 
-    this.messagesRef = this.database.ref('motorbike');
+    firebase.messagesRef = database.ref('motorbike');
 
-    this.messagesRef.off();
+    firebase.messagesRef.off();
 
 
     var setMessage = function (data) {
         var val = data.val();
 
-        this.saveDatabase(data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido, val.loaixe, val.status);
+        saveDatabase(data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido, val.loaixe, val.status);
     }.bind(this);
 
 
-    this.messagesRef.limitToLast(100).on('child_added', setMessage);
-    this.messagesRef.limitToLast(100).on('child_changed', setMessage);
+    firebase.messagesRef.limitToLast(100).on('child_added', setMessage);
+    firebase.messagesRef.limitToLast(100).on('child_changed', setMessage);
 
 
 
@@ -72,20 +78,22 @@ function saveDatabase(key, biensoxe, chuxe, diachi, kinhdo, vido, loaixe, status
 
 var loadUnlocatedCustomer = function () {
 
-    this.messagesRef = this.database.ref('customer');
+    firebase.messagesRef = database.ref('customer');
 
-    this.messagesRef.off();
+    firebase.messagesRef.off();
 
 
     var setMessage = function (data) {
         var val = data.val();
 
-        this.saveCustomerData(data.key, val.address, val.customerName, val.status, val.telephone, val.type);
+        saveCustomerData(data.key, val.address, val.customerName, val.status, val.telephone, val.type);
 
     }.bind(this);
 
-    this.messagesRef.on('child_added', setMessage);
-    this.messagesRef.on('child_changed', setMessage);
+    firebase.messagesRef.on('child_added', setMessage);
+    firebase.messagesRef.on('child_changed', setMessage);
+    //this.messagesRef.on('child_removed', setMessage);//không xét tới
+
 
 }
 
@@ -114,6 +122,7 @@ function saveCustomerData(key, address, customerName, status, tel, type) {
 }
 
 function loadListDinhVi() {
+    //load vô list
     for (var i = 0; i < customers.length; i++) {
 
         var customer = customers[i];
@@ -136,14 +145,14 @@ function updateMarkerPosition(latLng) {
 }
 function geocodePosition(pos) {
 
-    console.log(pos.lat());
+   
 
     geocoder.geocode({
         latLng: pos
     }, function (responses) {
         if (responses && responses.length > 0) {
             //cập nhật lại dịa chỉ khách hàng
-            console.log(responses);
+            //console.log(responses);
             $('#selection option:selected').text(responses[0].formatted_address);
             ////$('#selection option:selected').css('color', 'red');
             $('#selection').find('option:selected').css("background-color", "yellow");
@@ -154,7 +163,9 @@ function geocodePosition(pos) {
     });
 }
 
-function codeAddress(address) {
+export function codeAddress(address) {
+
+
     deleteMarkers();
     listfreemotorbikes = [];
 
@@ -223,6 +234,7 @@ function codeAddress(address) {
                     var a = new google.maps.LatLng(parseFloat(motorbike[5]), parseFloat(motorbike[4]));
                     destination.push(a);
                     listfreemotorbikes.push(motorbike);
+                   
                 }
 
 
@@ -230,24 +242,32 @@ function codeAddress(address) {
 
 
             serviceDistance = new google.maps.DistanceMatrixService();
-            serviceDistance.getDistanceMatrix(
-                {
-                    origins: origin,
-                    destinations: destination,
-                    travelMode: 'DRIVING',
-                    drivingOptions: {
-                        departureTime: new Date(Date.now()),
-                        trafficModel: 'bestguess'
-                    },
-                    unitSystem: google.maps.UnitSystem.METRIC,
-                    avoidHighways: true,
-                    avoidTolls: true,
-                }, addAllMotorbikeMarker);
 
+            for(var i=0;i<destination.length;i++)
+            {
+                var itemmoto=new Array();
+                
+                itemmoto.push(destination[i]);
+            
+                serviceDistance.getDistanceMatrix(
+                    {
+                        origins: origin,
+                        destinations: itemmoto,
+                        travelMode: 'DRIVING',
+                        drivingOptions: {
+                            departureTime: new Date(Date.now()),
+                            trafficModel: 'bestguess'
+                        },
+                        unitSystem: google.maps.UnitSystem.METRIC,
+                        avoidHighways: true,
+                        avoidTolls: true,
+                    }, addAllMotorbikeMarker);
 
+            }     
+      
             function addAllMotorbikeMarker(response, status) {
                 //console.log(response);
-                //console.log(status);
+                console.log(status);
                 if (status == 'OK') {
 
                     var destinations = response.destinationAddresses;
@@ -272,8 +292,7 @@ function codeAddress(address) {
                                
                             }
                         }
-
-
+                        
                         if (distance < 2000) {
                             geocoder.geocode({ 'address': destinations[j] }, function (results, status) {
                                 if (status == 'OK') {
@@ -286,8 +305,7 @@ function codeAddress(address) {
                                         title: address_
                                     });
                                     markers.push(marker);
-
-
+                                  
                                 }
                                 else {
                                     alert('Geocode was not successful for the following reason: ' + status);
@@ -296,10 +314,10 @@ function codeAddress(address) {
 
                         }
                         //console.log(distance);
-                        //console.log(destinations[j]);
+                        //console.log(destinations[j]);                
                         setMapOnAll(markers);
-
                     }
+                
                 }   
             }
            
@@ -314,8 +332,8 @@ function codeAddress(address) {
 }
 
 //dịnh vị
-function locatesleep(key) {
-    myVar = setTimeout(locate, 1300, key);
+export function locatesleep(key) {
+    let  myVar = setTimeout(locate, 1300, key);
 }
 
 
@@ -390,8 +408,8 @@ function deleteMarkers() {
 }
 
 function pushgrabinfo(customer, motorbike, date, status) {
-    this.customerRef = this.database.ref('grabinfo');
-    this.customerRef.push({
+    var customerRef = database.ref('grabinfo');
+    customerRef.push({
         customer: customer,
         date: date,
         motorbike: motorbike,
