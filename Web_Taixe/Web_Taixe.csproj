@@ -146,6 +146,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2856,6 +2857,9 @@
     <Content Include="Assets\fuctions\node_modules\xtend\immutable.js" />
     <Content Include="Assets\fuctions\node_modules\xtend\mutable.js" />
     <Content Include="Assets\fuctions\node_modules\xtend\test.js" />
+    <Content Include="Assets\Image\driver_avatar.png" />
+    <Content Include="Assets\Image\giphy.gif" />
+    <Content Include="Assets\Image\messenger.mp3" />
     <Content Include="Assets\jquery-3.1.1.min.js" />
     <Content Include="Assets\Login.css" />
     <Content Include="Assets\main.js" />
@@ -3385,7 +3389,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

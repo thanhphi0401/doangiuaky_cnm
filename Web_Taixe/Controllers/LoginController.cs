@@ -27,8 +27,7 @@ namespace Web_DinhVi.Controllers
                 }
 
             }
-
-            if (dem > 0)
+            if (dem == 0)
             {
                 statusLogin = "true";
                 User sessionUser = new User();

@@ -22,7 +22,7 @@ namespace Web_Taixe.Controllers
             return Json(new
             {
                 Email = item.Email
-            });
+            },JsonRequestBehavior.AllowGet);
 
         }
 

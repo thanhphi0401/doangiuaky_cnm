@@ -4,10 +4,14 @@
 
 
     <title>Ứng dụng cho tài xế</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/Assets/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Assets/Site.css" rel="stylesheet" />
 
     <link href="~/Assets/Login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3mobile.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+
     <style>
         #map {
             height: 100%;
@@ -90,6 +94,15 @@
 
     </script>*@
     @*<script src="~/Assets/scripts/showdirection.js"></script>*@
+    <script>
+            closeSidebar();
+            function openSidebar() {
+                document.getElementById("mySidebar").style.display = "block";
+            }
+            function closeSidebar() {
+                document.getElementById("mySidebar").style.display = "none";
+            }
+    </script>
 </body>
 
 </html>

@@ -50,7 +50,7 @@ export function initialize() {
 
     //get current email driver
     $.ajax({
-        url: '/Home/login',
+        url: '/Home/getCurrentDriver',
         type: "GET",
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
@@ -82,7 +82,7 @@ function loadListCustomer() {
 
     var setMessage = function (data) {
         var val = data.val();
-
+       
         var customer = [data.key, val.customerName, val.telephone, val.status, val.type, val.address];
         listcustomer.push(customer);
         
@@ -95,6 +95,7 @@ function loadListCustomer() {
 }
 
 function loadCurrentMotobike() {
+    
     firebase.messagesRef =database.ref('motorbike');
 
     firebase.messagesRef.off();
@@ -102,10 +103,12 @@ function loadCurrentMotobike() {
 
     var setMessage = function (data) {
         var val = data.val();
-        if(data.key==currentDriverEmail)
+       
+        if(val.email==currentDriverEmail)
         {
-            currentMoto = [data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido];
-            return;
+            currentMoto = [data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido,val.email];
+           // console.log(currentMoto);
+            
         }
         
     }.bind(this);
@@ -136,10 +139,29 @@ function loadDataGrabInfo() {
 function saveDatabaseGrab(key, customer, date, motorbike, status) {
 
     var data = [key, customer, date, motorbike, status];
-    grabinfo.push(data);
+    if(motorbike==currentMoto[0])//nếu là chuyến grab cho thằng driver hiện tại thì push thông báo
+    {
+        grabinfo.push(data);
 
+        var currentcustomer=getCurrentCustomer(customer);
+        //setTimeout(function(){ alert("Hello"); }, 3000);
+        //lấy thông tin khách hàng
 
+        $("#notify").append(" <div class=\"w3-cell\" style=\"width:30%\">\
+                    <img class=\"w3-circle img-responsive\" src=\"/Assets/Image/giphy.gif\" style=\"width:100%\">\
+                </div>\
+<div class=\"w3-cell w3-container\">\
+<h2>Khách hàng:"+currentcustomer[1]+"</h2>\
+<p>Địa chỉ:"+currentcustomer[5]+"</p>\
+<div id=\"approvearea\">\
+<a href=\"#\" class=\"btn btn-success approve\">Đồng ý</a>\
+<a href=\"#\" class=\"btn btn-danger deny\">Từ chối</a>\
+</div><br/><br/></div> <audio autoplay loop controls=\"controls\" hidden>\
+                <source src=\"/Assets/Image/messenger.mp3\"   type=\"audio/mpeg\"/>\
+                </audio>");
 
+    }
+   
 }
 
 
@@ -171,15 +193,6 @@ function getCurrentMotor(key) {
     }
 }
 
-function getMMDDYY(ticks) {
-    var date = new Date(ticks);
-    var mm = date.getMonth() + 1;
-    var dd = date.getDate();
-    var yy = new String(date.getFullYear()).substring(2);
-    if (mm < 10) mm = "0" + mm;
-    if (dd < 10) dd = "0" + dd;
-    return "" + mm + "/" + dd + "/" + +yy;
-}
 
 
 //$("tbody").off('click', 'a.direction').on("click", "a.direction", function () {

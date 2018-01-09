@@ -542,13 +542,10 @@ var directionsService;
 var directionsDisplay;
 
 var grabinfo = [];
-var motorbikegrab = [];
-var customergrab = [];
+var currentMoto;
+var currentDriverEmail;
 
 var listcustomer = [];
-var listmotorbike = [];
-
-var serviceDistance;
 
 // thiết lập xác thực firebase with google
 let database = firebase.database();
@@ -573,7 +570,24 @@ function initialize() {
     });
 
     loadListCustomer();
-    loadListMotorbike();
+
+    //get current email driver
+    $.ajax({
+        url: '/Home/getCurrentDriver',
+        type: "GET",
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            currentDriverEmail = response.Email;
+            console.log(response.Email);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+
+    //
+    loadCurrentMotobike();
 
     loadDataGrabInfo();
 
@@ -593,15 +607,14 @@ function loadListCustomer() {
 
         var customer = [data.key, val.customerName, val.telephone, val.status, val.type, val.address];
         listcustomer.push(customer);
-        //add vô table luôn
-        addTable(customer);
     }.bind(this);
 
     firebase.messagesRef.on('child_added', setMessage);
     firebase.messagesRef.on('child_changed', setMessage);
 }
 
-function loadListMotorbike() {
+function loadCurrentMotobike() {
+
     firebase.messagesRef = database.ref('motorbike');
 
     firebase.messagesRef.off();
@@ -609,8 +622,10 @@ function loadListMotorbike() {
     var setMessage = function (data) {
         var val = data.val();
 
-        var data = [data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido];
-        listmotorbike.push(data);
+        if (val.email == currentDriverEmail) {
+            currentMoto = [data.key, val.biensoxe, val.chuxe, val.diachi, val.kinhdo, val.vido, val.email];
+            // console.log(currentMoto);
+        }
     }.bind(this);
 
     firebase.messagesRef.on('child_added', setMessage);
@@ -635,101 +650,27 @@ function loadDataGrabInfo() {
 function saveDatabaseGrab(key, customer, date, motorbike, status) {
 
     var data = [key, customer, date, motorbike, status];
-    grabinfo.push(data);
-
-    //update trạng thái table
-    updateTable(data);
-}
-
-function addTable(customer) {
-    //tính cả trường hợp gọi lại
-
-    if (customer[3] == "0") //chưa đc định vị
+    if (motorbike == currentMoto[0]) //nếu là chuyến grab cho thằng driver hiện tại thì push thông báo
         {
-            $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
-            <td>" + "" + "</td>\
-            <td>" + customer[5] + "</td>\
-            <td>" + (customer[2] == "1" ? "Thường" : "Premium") + "</td>\
-            <td>" + customer[2] + "</td>\
-            <td style='color:red'>" + "Chưa định vị" + "</td>\
-            <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-            </tr>");
-        } else {
-        //đã được định vị, lấy thông tin grab
-        //debugger
-        var currentGrab = getCurrentGrab(customer[0]);
+            grabinfo.push(data);
 
-        if (typeof currentGrab === 'undefined') {
+            var currentcustomer = getCurrentCustomer(customer);
+            //setTimeout(function(){ alert("Hello"); }, 3000);
+            //lấy thông tin khách hàng
 
-            //chưa có gì
-        } else {
-
-            if (currentGrab[3]) {
-                //đã có xe
-                var currentMotor = getCurrentMotor(currentGrab[3]);
-
-                $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
-                <td>" + getMMDDYY(currentGrab[2]) + "</td>\
-                <td>" + customer[5] + "</td>\
-                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
-                <td>" + customer[2] + "</td>\
-                <td style='color:green'>" + "Đã có xe" + "</td>\
-                <td>" + currentMotor[2] + "</td>\
-                <td>" + currentMotor[1] + "</td>\
-                <td>" + "<a class='btn btn-primary direction' href='#'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
-                </tr>");
-            } else {
-                //chưa có xe
-
-                $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
-                <td>" + getMMDDYY(currentGrab[2]) + "</td>\
-                <td>" + customer[5] + "</td>\
-                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
-                <td>" + customer[2] + "</td>\
-                <td style='color:blue'>" + "Đã định vị" + "</td>\
-  <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-                </tr>");
-            }
+            $("#notify").append(" <div class=\"w3-cell\" style=\"width:30%\">\
+                    <img class=\"w3-circle img-responsive\" src=\"/Assets/Image/giphy.gif\" style=\"width:100%\">\
+                </div>\
+<div class=\"w3-cell w3-container\">\
+<h2>Khách hàng:" + currentcustomer[1] + "</h2>\
+<p>Địa chỉ:" + currentcustomer[5] + "</p>\
+<div id=\"approvearea\">\
+<a href=\"#\" class=\"btn btn-success approve\">Đồng ý</a>\
+<a href=\"#\" class=\"btn btn-danger deny\">Từ chối</a>\
+</div><br/><br/></div> <audio autoplay loop controls=\"controls\" hidden>\
+                <source src=\"/Assets/Image/messenger.mp3\"   type=\"audio/mpeg\"/>\
+                </audio>");
         }
-    }
-}
-
-function updateTable(grabinfo) {
-    //get row
-    //get customer info
-    var customer = getCurrentCustomer(grabinfo[1]);
-    var row = "#" + grabinfo[1];
-    $(row).remove();
-
-    if (grabinfo[3]) {
-        //đã có xe
-        var currentMotor = getCurrentMotor(grabinfo[3]);
-        $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
-                <td>" + getMMDDYY(grabinfo[2]) + "</td>\
-                <td>" + customer[5] + "</td>\
-                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
-                <td>" + customer[2] + "</td>\
-                <td style='color:green'>" + "Đã có xe" + "</td>\
-                <td>" + currentMotor[2] + "</td>\
-                <td>" + currentMotor[1] + "</td>\
-                <td>" + "<a class='btn btn-primary direction'   href='#' data-toggle='modal' data-target='#mymap'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
-                </tr>");
-    } else {
-        $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
-                <td>" + getMMDDYY(grabinfo[2]) + "</td>\
-                <td>" + customer[5] + "</td>\
-                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
-                <td>" + customer[2] + "</td>\
-                <td style='color:blue'>" + "Đã định vị" + "</td>\
-  <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-            <td>" + "" + "</td>\
-                </tr>");
-    }
 }
 
 //onclick='calculateAndDisplayRoute("+currentMotor[3]+","+customer[5]+")'
@@ -757,16 +698,6 @@ function getCurrentMotor(key) {
             return listmotorbike[i];
         }
     }
-}
-
-function getMMDDYY(ticks) {
-    var date = new Date(ticks);
-    var mm = date.getMonth() + 1;
-    var dd = date.getDate();
-    var yy = new String(date.getFullYear()).substring(2);
-    if (mm < 10) mm = "0" + mm;
-    if (dd < 10) dd = "0" + dd;
-    return "" + mm + "/" + dd + "/" + +yy;
 }
 
 //$("tbody").off('click', 'a.direction').on("click", "a.direction", function () {
@@ -13788,7 +13719,7 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 23 */
@@ -13797,6 +13728,57 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scripts_main_js__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -13839,13 +13821,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'Index',
     mounted() {
         Object(__WEBPACK_IMPORTED_MODULE_0__scripts_main_js__["a" /* initialize */])();
+        this.getEmailDriver();
     },
     data() {
         return {
-            title: 'Trang chủ'
+            title: 'Trang chủ',
+            Email: 'abc@gmail.com'
         };
     },
-    methods: {}
+    methods: {
+        getEmailDriver() {
+            var self = this;
+            $.ajax({
+                url: '/Home/getCurrentDriver',
+                type: "GET",
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    self.Email = response.Email;
+                    console.log(response.Email);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        },
+        logout() {
+            var self = this;
+            self.$router.push('/login');
+            window.localStorage.removeItem("access_token");
+        }
+    }
 });
 
 /***/ }),
@@ -13853,11 +13859,76 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
+  return _c('div', {
+    staticClass: "mobileinterface"
+  }, [_c('nav', {
+    staticClass: "w3-sidebar w3-bar-block w3-card",
+    attrs: {
+      "id": "mySidebar"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('a', {
+    staticClass: "w3-bar-item w3-button",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v(_vm._s(_vm.Email))]), _vm._v(" "), _c('a', {
+    staticClass: "w3-bar-item w3-button",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": _vm.logout
+    }
+  }, [_vm._v("Logout")])]), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticClass: "container"
-  }), _vm._v(" "), _c('div', {
+  return _c('div', {
+    staticClass: "w3-container w3-theme-d2"
+  }, [_c('span', {
+    staticClass: "w3-button w3-display-topright w3-large",
+    attrs: {
+      "onclick": "closeSidebar()"
+    }
+  }, [_vm._v("X")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
+    staticClass: "w3-padding w3-center"
+  }, [_c('img', {
+    staticClass: "w3-circle",
+    staticStyle: {
+      "width": "75%"
+    },
+    attrs: {
+      "src": "/Assets/Image/driver_avatar.png",
+      "alt": "avatar"
+    }
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('header', {
+    staticClass: "w3-top w3-bar w3-theme"
+  }, [_c('button', {
+    staticClass: "w3-bar-item w3-button w3-xxxlarge w3-hover-theme",
+    attrs: {
+      "onclick": "openSidebar()"
+    }
+  }, [_vm._v("☰")]), _vm._v(" "), _c('h1', {
+    staticClass: "w3-bar-item"
+  }, [_vm._v("DriverApp")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-container",
+    staticStyle: {
+      "margin-top": "90px"
+    }
+  }, [_c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "w3-cell-row",
+    attrs: {
+      "id": "notify"
+    }
+  }), _vm._v(" "), _c('hr')])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('footer', {
+    staticClass: "w3-container w3-bottom w3-theme w3-margin-top"
+  }, [_c('h3', [_vm._v("Ứng dụng grabike dành cho tài xế. Phát triển bởi Nguyễn Thanh Phi. © 2018")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "modal fade",
     attrs: {
       "id": "mymap",
@@ -13890,7 +13961,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "button",
       "data-dismiss": "modal"
     }
-  }, [_vm._v("Close")])])])])])])
+  }, [_vm._v("Close")])])])])])
 }]}
 if (false) {
   module.hot.accept()
