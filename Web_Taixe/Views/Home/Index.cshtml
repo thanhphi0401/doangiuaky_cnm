@@ -39,7 +39,7 @@
 
 
 
-   
+    <div id="map" class="hidden"></div>
     <div id="app"></div>
 
 
@@ -74,28 +74,15 @@
 
 
     @*<script src="~/Assets/scripts/main.js"></script>*@
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkXZtUT0xV5xWjf39lS1de3qFybmlyRzA&callback=initMap">
+    <script   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkXZtUT0xV5xWjf39lS1de3qFybmlyRzA&callback=initMap">
 
     </script>
 
     <script src="/dist/build.js"></script>
 
 
-    @*<script>
-        $(document).ready(function () {
-            $("tbody").off('click', 'a.direction').on("click", "a.direction", function () {
-
-                var btn = $(this);
-
-                calculateAndDisplayRoute(btn.data('ad1'), btn.data('ad2'));
-
-            });
-
-        });
-
-
-    </script>*@
-    @*<script src="~/Assets/scripts/showdirection.js"></script>*@
+   
+ 
     <script>
             closeSidebar();
             function openSidebar() {

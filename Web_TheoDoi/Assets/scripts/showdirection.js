@@ -6,8 +6,8 @@ function calculateAndDisplayRoute(p1, p2) {
     directionsDisplay = new google.maps.DirectionsRenderer;
 
    
-    var map = new google.maps.Map(document.getElementById('app'), {
-        zoom: 12,
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
         center: { lat: 10.8230989, lng: 106.6296638 }
     });
     directionsDisplay.setMap(map);

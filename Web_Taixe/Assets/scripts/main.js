@@ -43,15 +43,15 @@ function checkSetup() {
 export function initialize() {
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer;
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: { lat: 10.8230989, lng: 106.6296638 }
-    });
-    directionsDisplay.setMap(map);
+    //var map = new google.maps.Map(document.getElementById('map'), {
+    //    zoom: 12,
+    //    center: { lat: 10.8230989, lng: 106.6296638 }
+    //});
+    //directionsDisplay.setMap(map);
 
-    $("#mymap").on("shown.bs.modal", function () {
-        google.maps.event.trigger(map, "resize");
-    });
+    //$("#mymap").on("shown.bs.modal", function () {
+    //    google.maps.event.trigger(map, "resize");
+    //});
 
 
     loadListCustomer();
@@ -126,7 +126,7 @@ function loadCurrentMotobike() {
     firebase.messagesRef.on('child_changed', setMessage);
 }
 
-function loadDataGrabInfo() {
+export function loadDataGrabInfo() {
 
     firebase.messagesRef = database.ref('grabinfo');
 
@@ -144,7 +144,7 @@ function loadDataGrabInfo() {
 
 }
 
-function saveDatabaseGrab(key, customer, date, motorbike, status) {
+export function saveDatabaseGrab(key, customer, date, motorbike, status) {
 
     var data = [key, customer, date, motorbike, status];
     if(motorbike==currentMoto[0])//nếu là chuyến grab cho thằng driver hiện tại thì push thông báo
@@ -156,24 +156,24 @@ function saveDatabaseGrab(key, customer, date, motorbike, status) {
         //lấy thông tin khách hàng
 
         //debugger
-        var html="<div><div class=\"w3-cell\" style=\"width:30%\">\
-                    <img class=\"w3-circle img-responsive\" src=\"/Assets/Image/giphy.gif\" style=\"width:100%\">\
-                </div>\
-<div class=\"w3-cell w3-container\">\
-<h2>Khách hàng:"+currentcustomer[1]+"</h2>\
-<p>Địa chỉ:"+currentcustomer[5]+"</p>\
-<div id=\"approvearea\">\
-<Notify />\
-<a href=\"#\" class=\"btn btn-danger deny\">Từ chối đi</a>\
-</div><br/><br/></div> <audio autoplay loop controls=\"controls\" hidden>\
-                <source src=\"/Assets/Image/messenger.mp3\"   type=\"audio/mpeg\"/>\
-                </audio></div>";
+//        var html="<div><div class=\"w3-cell\" style=\"width:30%\">\
+//                    <img class=\"w3-circle img-responsive\" src=\"/Assets/Image/giphy.gif\" style=\"width:100%\">\
+//                </div>\
+//<div class=\"w3-cell w3-container\">\
+//<h2>Khách hàng:"+currentcustomer[1]+"</h2>\
+//<p>Địa chỉ:"+currentcustomer[5]+"</p>\
+//<div id=\"approvearea\">\
+//<Notify />\
+//<a href=\"#\" class=\"btn btn-danger deny\">Từ chối đi</a>\
+//</div><br/><br/></div> <audio autoplay loop controls=\"controls\" hidden>\
+//                <source src=\"/Assets/Image/messenger.mp3\"   type=\"audio/mpeg\"/>\
+//                </audio></div>";
 
-        var res = Vue.compile(html)
-        new Vue({
-            render: res.render,
-            staticRenderFns: res.staticRenderFns
-        }).$mount('#notify')
+//        var res = Vue.compile(html)
+//        new Vue({
+//            render: res.render,
+//            staticRenderFns: res.staticRenderFns
+//        }).$mount('#notify')
 
 
 //        $("#notify").append("<div class=\"w3-cell\" style=\"width:30%\">\
@@ -195,7 +195,7 @@ function saveDatabaseGrab(key, customer, date, motorbike, status) {
 
 
 //onclick='calculateAndDisplayRoute("+currentMotor[3]+","+customer[5]+")'
-function getCurrentCustomer(key) {
+export function getCurrentCustomer(key) {
     for (var i = 0; i < listcustomer.length; i++) {
 
         if (listcustomer[i][0] == key) {

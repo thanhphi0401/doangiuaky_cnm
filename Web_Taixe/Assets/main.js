@@ -4,6 +4,7 @@ import App from './App.vue';
 
 import Login from './components/Login.vue';
 import Index from './components/Index.vue';
+import VueFire from 'vuefire';
 
 var routes = [
   { path: '/login', component: Login },
@@ -22,6 +23,7 @@ var routes = [
 
 
 Vue.use(VueRouter);
+Vue.use(VueFire);
 
 var router = new VueRouter({
     routes

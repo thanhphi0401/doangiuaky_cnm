@@ -13510,7 +13510,7 @@ function initialize() {
     directionsService = new google.maps.DirectionsService();
     directionsDisplay = new google.maps.DirectionsRenderer();
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: 10,
         center: { lat: 10.8230989, lng: 106.6296638 }
     });
     directionsDisplay.setMap(map);
@@ -13581,6 +13581,7 @@ function loadDataGrabInfo() {
 
 function saveDatabaseGrab(key, customer, date, motorbike, status) {
 
+    debugger;
     var data = [key, customer, date, motorbike, status];
     grabinfo.push(data);
 
@@ -13611,13 +13612,39 @@ function addTable(customer) {
         if (typeof currentGrab === 'undefined') {
 
             //chưa có gì
+
         } else {
 
+            console.log(currentGrab);
             if (currentGrab[3]) {
                 //đã có xe
                 var currentMotor = getCurrentMotor(currentGrab[3]);
 
-                $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
+                if (currentGrab[4] == "2") {
+                    $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
+                <td>" + getMMDDYY(currentGrab[2]) + "</td>\
+                <td>" + customer[5] + "</td>\
+                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
+                <td>" + customer[2] + "</td>\
+                <td style='color:yellow'>" + "Đang di chuyển" + "</td>\
+                <td>" + currentMotor[2] + "</td>\
+                <td>" + currentMotor[1] + "</td>\
+                <td>" + "<a class='btn btn-primary direction' href='#'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
+                </tr>");
+                } else if (currentGrab[4] == "3") {
+                    $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
+                <td>" + getMMDDYY(currentGrab[2]) + "</td>\
+                <td>" + customer[5] + "</td>\
+                <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
+                <td>" + customer[2] + "</td>\
+                <td style='color:purple'>" + "Đã hoàn thành" + "</td>\
+                <td>" + currentMotor[2] + "</td>\
+                <td>" + currentMotor[1] + "</td>\
+                <td>" + "<a class='btn btn-primary direction' href='#'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
+                </tr>");
+                } else if (currentGrab[4] == "1") {
+
+                    $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
                 <td>" + getMMDDYY(currentGrab[2]) + "</td>\
                 <td>" + customer[5] + "</td>\
                 <td>" + (customer[4] == "1" ? "Thường" : "Premium") + "</td>\
@@ -13627,6 +13654,7 @@ function addTable(customer) {
                 <td>" + currentMotor[1] + "</td>\
                 <td>" + "<a class='btn btn-primary direction' href='#'  data-ad1='" + currentMotor[3] + "' data-ad2='" + customer[5] + "' >View Map</a>" + "</td>\
                 </tr>");
+                }
             } else {
                 //chưa có xe
 
@@ -13655,6 +13683,10 @@ function updateTable(grabinfo) {
     if (grabinfo[3]) {
         //đã có xe
         var currentMotor = getCurrentMotor(grabinfo[3]);
+        console.log(grabinfo);
+        if (grabinfo[4] == "2") {
+            console.log("đang di chuyển");
+        }
         $("#detailgrab").append("<tr id='" + customer[0] + "'><td>" + customer[1] + "</td>\
                 <td>" + getMMDDYY(grabinfo[2]) + "</td>\
                 <td>" + customer[5] + "</td>\

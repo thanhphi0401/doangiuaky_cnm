@@ -1,13 +1,14 @@
 ﻿var directionsService;
 var directionsDisplay;
 
-function calculateAndDisplayRoute(p1, p2) {
+export function calculateAndDisplayRoute(p1, p2)
+{
     directionsService = new google.maps.DirectionsService;
     directionsDisplay = new google.maps.DirectionsRenderer;
 
-   
+    $('#map').removeClass('hidden');
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: 10,
         center: { lat: 10.8230989, lng: 106.6296638 }
     });
     directionsDisplay.setMap(map);
